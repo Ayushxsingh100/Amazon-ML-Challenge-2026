@@ -1,0 +1,24 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS / OS metadata
+.DS_Store
+Thumbs.db
+
+# Raw monolithic TSVs exceeding GitHub 100MB limit
+# The repository tracks split parts: *.tsv.part_*
+data/train/*.tsv
+data/test/*.tsv
+!data/train/*.tsv.part_*
+!data/test/*.tsv.part_*
