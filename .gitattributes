@@ -1,2 +1,7 @@
 *.tsv filter=lfs diff=lfs merge=lfs -text
 *.tsv.part_* filter=lfs diff=lfs merge=lfs -text
+outputs/person1_step1/normalized/*.tsv filter=lfs diff=lfs merge=lfs -text
+outputs/person1_step1/test_candidate_pairs_s2.tsv filter=lfs diff=lfs merge=lfs -text
+outputs/person1_step1/test_candidate_pairs_s3.tsv filter=lfs diff=lfs merge=lfs -text
+outputs/person1_step1/train_ground_truth_reconstructed.tsv filter=lfs diff=lfs merge=lfs -text
+outputs/person1_step1/blocking_eval.duckdb filter=lfs diff=lfs merge=lfs -text
