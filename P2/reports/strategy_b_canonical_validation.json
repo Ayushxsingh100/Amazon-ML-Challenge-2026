@@ -1,0 +1,48 @@
+{
+  "V1_PASS": true,
+  "V2": {
+    "total_rows": 24229173,
+    "differing_rows": 760671,
+    "samples_written": true
+  },
+  "V3_PASS": true,
+  "V4_train_s2": {
+    "rule_a_pos": 1899932,
+    "rule_b_pos": 395879,
+    "union_pos": 2008763,
+    "denominator": 3693619
+  },
+  "V4_train_s3": {
+    "rule_a_pos": 1967320,
+    "rule_b_pos": 170383,
+    "union_pos": 2110929,
+    "denominator": 3944746
+  },
+  "V5": {
+    "s2": {
+      "D_missing": 0,
+      "D_extra": 0
+    },
+    "s3": {
+      "D_missing": 0,
+      "D_extra": 0
+    }
+  },
+  "V6_test_s2": {
+    "p1_count": 26046195,
+    "p2_count": 26046195,
+    "sym_diff": 0,
+    "rule_a_count": 25887875,
+    "rule_b_count": 358442
+  },
+  "V6_test_s3": {
+    "p1_count": 30777878,
+    "p2_count": 30777878,
+    "sym_diff": 0,
+    "rule_a_count": 30598998,
+    "rule_b_count": 227731
+  },
+  "V7_PASS": true,
+  "V8_PASS": true,
+  "V2_clarification": "The 760,671 difference in V2 represents the count of differing rows between the OLD P2 extractor (\\b word boundaries) and the CANONICAL P1-style extractor ([0-9]+[A-Za-z]?). It is NOT a disagreement between the corrected P2 implementation and P1."
+}

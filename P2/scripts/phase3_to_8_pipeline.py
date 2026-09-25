@@ -67,10 +67,10 @@ FEATURE_SQL = """
     CASE WHEN LENGTH(s1.business_address) > 0 AND LENGTH(tgt.business_address) > 0
          THEN CAST(LEAST(LENGTH(s1.business_address), LENGTH(tgt.business_address)) AS DOUBLE) / GREATEST(LENGTH(s1.business_address), LENGTH(tgt.business_address))
          ELSE 0.0 END AS address_len_ratio,
-    -- House number overlap
-    CASE WHEN regexp_extract(COALESCE(s1.business_address,''), '\\b[0-9]+\\b', 0) <> ''
-              AND regexp_extract(COALESCE(tgt.business_address,''), '\\b[0-9]+\\b', 0) <> ''
-              AND regexp_extract(s1.business_address, '\\b[0-9]+\\b', 0) = regexp_extract(tgt.business_address, '\\b[0-9]+\\b', 0)
+    -- House number overlap (Canonical Extractor)
+    CASE WHEN regexp_extract(COALESCE(s1.business_address,''), '[0-9]+[A-Za-z]?', 0) <> ''
+              AND regexp_extract(COALESCE(tgt.business_address,''), '[0-9]+[A-Za-z]?', 0) <> ''
+              AND regexp_extract(s1.business_address, '[0-9]+[A-Za-z]?', 0) = regexp_extract(tgt.business_address, '[0-9]+[A-Za-z]?', 0)
          THEN 1.0 ELSE 0.0 END AS address_first_number_match,
     -- Country
     CASE WHEN s1.country <> '' AND s1.country = tgt.country THEN 1.0 ELSE 0.0 END AS country_match,
