@@ -64,11 +64,17 @@ for typ in ["train", "test"]:
         path = os.path.join(NORM_DIR, f"{typ}_source{num}_normalized.tsv")
         con.execute(f"CREATE TABLE {tbl} AS SELECT entity_id, business_name, business_address, country FROM read_csv('{path}', delim='\\t', header=true, all_varchar=true)")
 
+V3_CAND_DIR = os.path.join(REPO, "P1", "data", "candidates", "v3")
+LEGACY_CAND_DIR = os.path.join(REPO, "outputs", "person1_step1")
+
+test_s2_cand = os.path.join(V3_CAND_DIR, "test_candidate_pairs_s2_v3.tsv") if os.path.exists(os.path.join(V3_CAND_DIR, "test_candidate_pairs_s2_v3.tsv")) else os.path.join(LEGACY_CAND_DIR, "test_candidate_pairs_s2.tsv")
+test_s3_cand = os.path.join(V3_CAND_DIR, "test_candidate_pairs_s3_v3.tsv") if os.path.exists(os.path.join(V3_CAND_DIR, "test_candidate_pairs_s3_v3.tsv")) else os.path.join(LEGACY_CAND_DIR, "test_candidate_pairs_s3.tsv")
+
 tasks = [
     {"type": "train", "src": "s2", "cand": os.path.join(CAND_DIR, "train_candidate_pairs_s2.tsv"), "has_label": True},
     {"type": "train", "src": "s3", "cand": os.path.join(CAND_DIR, "train_candidate_pairs_s3.tsv"), "has_label": True},
-    {"type": "test", "src": "s2", "cand": os.path.join(REPO, "outputs", "person1_step1", "test_candidate_pairs_s2.tsv"), "has_label": False},
-    {"type": "test", "src": "s3", "cand": os.path.join(REPO, "outputs", "person1_step1", "test_candidate_pairs_s3.tsv"), "has_label": False},
+    {"type": "test", "src": "s2", "cand": test_s2_cand, "has_label": False},
+    {"type": "test", "src": "s3", "cand": test_s3_cand, "has_label": False},
 ]
 
 manifest_rows = []

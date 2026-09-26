@@ -13,7 +13,13 @@ MODEL_DIR = os.path.join(REPO, "P2", "models")
 REPORT_DIR = os.path.join(REPO, "P2", "reports")
 TMP_DIR = os.path.join(REPO, "P2", "data", "duckdb_feat_tmp")
 
-TEST_S3_CAND = os.path.join(REPO, "outputs", "person1_step1", "test_candidate_pairs_s3.tsv")
+# Test candidate path (Defaults to validated production V3 candidates; legacy path marked as deprecated)
+V3_CAND_DIR = os.path.join(REPO, "P1", "data", "candidates", "v3")
+LEGACY_CAND_DIR = os.path.join(REPO, "outputs", "person1_step1")
+TEST_S3_CAND = os.environ.get("TEST_S3_CAND",
+    os.path.join(V3_CAND_DIR, "test_candidate_pairs_s3_v3.tsv") if os.path.exists(os.path.join(V3_CAND_DIR, "test_candidate_pairs_s3_v3.tsv"))
+    else os.path.join(LEGACY_CAND_DIR, "test_candidate_pairs_s3.tsv")  # DEPRECATED LEGACY FALLBACK
+)
 model_path = os.path.join(MODEL_DIR, "lgbm_baseline_v1.txt")
 
 FEATURE_SQL = """
