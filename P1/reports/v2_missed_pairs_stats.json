@@ -1,0 +1,173 @@
+{
+  "total_v2_missed": 2615197,
+  "missed_s2": 1255044,
+  "missed_s3": 1360153,
+  "country_breakdown": [
+    {
+      "target_source": "source2",
+      "country": "India",
+      "count": 700504,
+      "pct_target": 55.8151,
+      "pct_total": 26.7859
+    },
+    {
+      "target_source": "source2",
+      "country": "US",
+      "count": 554540,
+      "pct_target": 44.1849,
+      "pct_total": 21.2045
+    },
+    {
+      "target_source": "source3",
+      "country": "India",
+      "count": 732109,
+      "pct_target": 53.8255,
+      "pct_total": 27.9944
+    },
+    {
+      "target_source": "source3",
+      "country": "US",
+      "count": 628044,
+      "pct_target": 46.1745,
+      "pct_total": 24.0152
+    }
+  ],
+  "script_analysis": [
+    {
+      "target_source": "source2",
+      "total": 1255044,
+      "ascii": 167174,
+      "devanagari": 868527,
+      "other_non_ascii": 219343,
+      "cross_script": 386517
+    },
+    {
+      "target_source": "source3",
+      "total": 1360153,
+      "ascii": 112579,
+      "devanagari": 1053254,
+      "other_non_ascii": 194320,
+      "cross_script": 306899
+    }
+  ],
+  "error_buckets": [
+    {
+      "target_source": "source2",
+      "bucket": "high_name_similarity_house_divergence",
+      "count": 294881,
+      "pct": 23.4957
+    },
+    {
+      "target_source": "source2",
+      "bucket": "missing_house_number_one_side",
+      "count": 269779,
+      "pct": 21.4956
+    },
+    {
+      "target_source": "source2",
+      "bucket": "house_match_moderate_name_variation",
+      "count": 168503,
+      "pct": 13.4261
+    },
+    {
+      "target_source": "source2",
+      "bucket": "indic_devanagari_script",
+      "count": 167174,
+      "pct": 13.3202
+    },
+    {
+      "target_source": "source2",
+      "bucket": "unstructured_divergence",
+      "count": 164861,
+      "pct": 13.1359
+    },
+    {
+      "target_source": "source2",
+      "bucket": "house_match_severe_name_variation",
+      "count": 126083,
+      "pct": 10.0461
+    },
+    {
+      "target_source": "source2",
+      "bucket": "missing_house_number_both_sides",
+      "count": 59524,
+      "pct": 4.7428
+    },
+    {
+      "target_source": "source2",
+      "bucket": "zip_match_prefix_mismatch",
+      "count": 4239,
+      "pct": 0.3378
+    },
+    {
+      "target_source": "source3",
+      "bucket": "high_name_similarity_house_divergence",
+      "count": 324122,
+      "pct": 23.8298
+    },
+    {
+      "target_source": "source3",
+      "bucket": "missing_house_number_one_side",
+      "count": 273926,
+      "pct": 20.1394
+    },
+    {
+      "target_source": "source3",
+      "bucket": "house_match_moderate_name_variation",
+      "count": 251632,
+      "pct": 18.5003
+    },
+    {
+      "target_source": "source3",
+      "bucket": "unstructured_divergence",
+      "count": 185993,
+      "pct": 13.6744
+    },
+    {
+      "target_source": "source3",
+      "bucket": "house_match_severe_name_variation",
+      "count": 125992,
+      "pct": 9.2631
+    },
+    {
+      "target_source": "source3",
+      "bucket": "indic_devanagari_script",
+      "count": 112579,
+      "pct": 8.2769
+    },
+    {
+      "target_source": "source3",
+      "bucket": "missing_house_number_both_sides",
+      "count": 80374,
+      "pct": 5.9092
+    },
+    {
+      "target_source": "source3",
+      "bucket": "zip_match_prefix_mismatch",
+      "count": 5535,
+      "pct": 0.4069
+    }
+  ],
+  "jw_percentiles": [
+    {
+      "target_source": "source2",
+      "min": 0.0,
+      "p05": 0.37663398692810457,
+      "p25": 0.4617647058823529,
+      "median": 0.8415079365079364,
+      "p75": 0.9411764705882353,
+      "p95": 0.9746376811594203,
+      "max": 0.996875
+    },
+    {
+      "target_source": "source3",
+      "min": 0.0,
+      "p05": 0.3792900279864487,
+      "p25": 0.6833333333333332,
+      "median": 0.8457142857142858,
+      "p75": 0.9393939393939394,
+      "p95": 0.9743589743589745,
+      "max": 0.9962264150943395
+    }
+  ]
+}
