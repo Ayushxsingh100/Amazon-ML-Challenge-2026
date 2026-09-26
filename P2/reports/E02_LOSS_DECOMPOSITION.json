@@ -1,0 +1,103 @@
+{
+  "experiment": "E02 Forensic Loss Decomposition",
+  "baseline": {
+    "authoritative_score": 0.718765173,
+    "reconciled_score": 0.718765165,
+    "reconciliation_diff": 8.153e-09,
+    "threshold": 0.5,
+    "oof_rows": 54592725,
+    "s2_rows": 24594064,
+    "s3_rows": 29998661,
+    "total_s1_entities": 2206821
+  },
+  "pipeline_oracles": {
+    "full_oracle": {
+      "overall_macro_f05": 1.0,
+      "description": "Theoretical upper bound"
+    },
+    "candidate_oracle": {
+      "overall_macro_f05": 0.784522591,
+      "fold_mean": 0.784522682,
+      "fold_std": 0.000486801,
+      "folds": [
+        0.784132303,
+        0.784143426,
+        0.784802649,
+        0.785239958,
+        0.784295075
+      ],
+      "s2_diagnostic": 0.714624767,
+      "s3_diagnostic": 0.724138181
+    },
+    "ranking_oracle": {
+      "overall_macro_f05": 0.78029789,
+      "fold_mean": 0.780297983,
+      "fold_std": 0.000455519,
+      "folds": [
+        0.779944522,
+        0.779911347,
+        0.780583102,
+        0.780938441,
+        0.780112504
+      ],
+      "s2_diagnostic": 0.713213851,
+      "s3_diagnostic": 0.720957987
+    },
+    "actual_e02": {
+      "overall_macro_f05": 0.718765165,
+      "fold_mean": 0.718765173,
+      "fold_std": 0.000653879,
+      "folds": [
+        0.718062416,
+        0.718144093,
+        0.719168707,
+        0.719574828,
+        0.718875822
+      ]
+    }
+  },
+  "loss_decomposition": {
+    "blocking_loss": {
+      "absolute": 0.215477409,
+      "percentage": 76.61832112654182
+    },
+    "ranking_loss": {
+      "absolute": 0.004224700999999942,
+      "percentage": 1.5021969095684544
+    },
+    "decision_loss": {
+      "absolute": 0.061532725000000066,
+      "percentage": 21.879481963889738
+    },
+    "total_gap": {
+      "absolute": 0.281234835,
+      "percentage": 100.0
+    }
+  },
+  "candidate_recall": {
+    "s2": {
+      "total_truth_pairs": 3693619,
+      "captured_truth_pairs": 2214137,
+      "recall": 0.599449212,
+      "s1_zero_captured": 551104,
+      "s1_partial_capture": 475680,
+      "s1_full_capture": 892292
+    },
+    "s3": {
+      "total_truth_pairs": 3944746,
+      "captured_truth_pairs": 2346442,
+      "recall": 0.594827145,
+      "s1_zero_captured": 510863,
+      "s1_partial_capture": 583513,
+      "s1_full_capture": 846169
+    },
+    "joint": {
+      "total_truth_pairs": 7638365,
+      "captured_truth_pairs": 4560579,
+      "recall": 0.597062199,
+      "s1_zero_captured": 258666,
+      "s1_partial_capture": 1279869,
+      "s1_full_capture": 545039
+    }
+  }
+}
