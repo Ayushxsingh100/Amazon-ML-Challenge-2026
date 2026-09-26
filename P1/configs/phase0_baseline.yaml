@@ -1,0 +1,52 @@
+project:
+  name: amazon_ml_challenge_2026
+  phase: phase0
+  date: "2026-09-26"
+  owner: person1
+
+datasets:
+  raw:
+    train_source1: data/train/train_source1.tsv
+    train_source2: data/train/train_source2.tsv
+    train_source3: data/train/train_source3.tsv
+    test_source1: data/test/test_source1.tsv
+    test_source2: data/test/test_source2.tsv
+    test_source3: data/test/test_source3.tsv
+    ground_truth: data/train/train_ground_truth.tsv
+  normalized:
+    train_source1: outputs/person1_step1/normalized/train_source1_normalized.tsv
+    train_source2: outputs/person1_step1/normalized/train_source2_normalized.tsv
+    train_source3: outputs/person1_step1/normalized/train_source3_normalized.tsv
+    test_source1: outputs/person1_step1/normalized/test_source1_normalized.tsv
+    test_source2: outputs/person1_step1/normalized/test_source2_normalized.tsv
+    test_source3: outputs/person1_step1/normalized/test_source3_normalized.tsv
+
+candidates:
+  v1:
+    train_s2: P2/data/candidates/train_candidate_pairs_s2.tsv
+    train_s3: P2/data/candidates/train_candidate_pairs_s3.tsv
+    test_s2: P2/data/candidates/test_candidate_pairs_s2.tsv
+    test_s3: P2/data/candidates/test_candidate_pairs_s3.tsv
+  v2:
+    train_s2: P2/data/candidates/train_candidate_pairs_s2_v2.tsv
+    train_s3: P2/data/candidates/train_candidate_pairs_s3_v2.tsv
+    test_s2: P2/data/candidates/test_candidate_pairs_s2_v2.tsv
+    test_s3: P2/data/candidates/test_candidate_pairs_s3_v2.tsv
+
+predictions:
+  oof_canonical:
+    fold0: P2/reports/E02_OOF_FULL_CANONICAL_fold0.tsv
+    fold1: P2/reports/E02_OOF_FULL_CANONICAL_fold1.tsv
+    fold2: P2/reports/E02_OOF_FULL_CANONICAL_fold2.tsv
+    fold3: P2/reports/E02_OOF_FULL_CANONICAL_fold3.tsv
+    fold4: P2/reports/E02_OOF_FULL_CANONICAL_fold4.tsv
+
+evaluation:
+  scorer: validation/scorer_v1.py
+  metrics: validation/metrics.py
+  folds_manifest: P3/reports/folds_v1_manifest.tsv
+  metric_name: macro_f0.5
+  fixed_threshold: 0.5
+
+status:
+  phase0: completed
