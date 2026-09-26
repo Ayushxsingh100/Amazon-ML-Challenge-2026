@@ -32,10 +32,11 @@ All measurements are computed directly from the repository's real ground truth a
 - **Canonical P1 Entities**:
   - `P1/data/entities/train/source1/train_s1_entities.parquet` (2,206,821 entities)
   - `P1/data/entities/train/source2/train_s2_entities.parquet` (5,034,616 entities)
-  - `P1/data/entities/train/source3/train_s3_entities.parquet` (4,874,271 entities)
-  - `P1/data/entities/test/source1/test_s1_entities.parquet` (1,655,130 entities)
-  - `P1/data/entities/test/source2/test_s2_entities.parquet` (5,236,750 entities)
-  - `P1/data/entities/test/source3/test_s3_entities.parquet` (5,191,894 entities)
+  - `P1/data/entities/train/source3/train_s3_entities.parquet` (5,285,603 entities)
+  - `P1/data/entities/test/source1/test_s1_entities.parquet` (1,732,544 entities)
+  - `P1/data/entities/test/source2/test_s2_entities.parquet` (4,887,273 entities)
+  - `P1/data/entities/test/source3/test_s3_entities.parquet` (5,082,316 entities)
+  - Total canonical entity volume: **24,228,873 rows** (100% lossless retention from raw datasets).
 - **Evaluated Candidate Artifacts**:
   - `P2/data/candidates/train_candidate_pairs_s2.tsv` (V1 Train S2)
   - `P2/data/candidates/train_candidate_pairs_s3.tsv` (V1 Train S3)
@@ -195,9 +196,12 @@ Fanout per S1 entity was calculated across the full entity pool:
 | **V1 Train Combined** | 2,206,821 | 124,148 | 5.63% | 5.0 | 63.0 | 123.0 | 284.0 | 721.0 | 2,972 |
 | **V2 Train S2** | 2,206,821 | 277,448 | 12.57% | 3.0 | 38.0 | 70.0 | 154.0 | 373.0 | 1,477 |
 | **V2 Train S3** | 2,206,821 | 262,072 | 11.88% | 3.0 | 48.0 | 85.0 | 199.0 | 511.0 | 1,829 |
-| **V2 Train Combined** | 2,206,821 | 94,043 | **4.26%** | 5.0 | 81.0 | 155.0 | 346.0 | 850.0 | 3,306 |
-| **Legacy Step 1 Test S2** | 1,655,130 | 400,630 | **24.21%** | 2.0 | 37.0 | 90.0 | 215.0 | 401.0 | 1,510 |
-| **Legacy Step 1 Test S3** | 1,655,130 | 381,967 | **23.08%** | 2.0 | 47.0 | 112.0 | 232.0 | 498.0 | 1,820 |
+| **V1 Test S2** | 1,732,544 | 254,483 | 14.69% | 3.0 | 45.0 | 96.0 | 219.0 | 408.0 | 1,510 |
+| **V1 Test S3** | 1,732,544 | 239,473 | 13.82% | 3.0 | 56.0 | 122.0 | 243.0 | 503.0 | 1,820 |
+| **V2 Test S2** | 1,732,544 | 206,207 | 11.90% | 3.0 | 55.0 | 111.0 | 239.0 | 488.0 | 1,703 |
+| **V2 Test S3** | 1,732,544 | 195,392 | 11.28% | 3.0 | 67.0 | 142.0 | 277.0 | 582.0 | 2,004 |
+| **Legacy Step 1 Test S2** | 1,732,544 | 400,630 | **23.12%** | 2.0 | 37.0 | 90.0 | 215.0 | 401.0 | 1,510 |
+| **Legacy Step 1 Test S3** | 1,732,544 | 381,967 | **22.05%** | 2.0 | 47.0 | 112.0 | 232.0 | 498.0 | 1,820 |
 
 ---
 

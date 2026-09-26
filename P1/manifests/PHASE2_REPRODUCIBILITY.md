@@ -48,13 +48,13 @@ This runs the full multi-file audit across all 10 candidate files, computes grou
 
 | Dataset Path | Rows | Size (bytes) | SHA256 Checksum |
 |---|---|---|---|
-| `data/train/train_ground_truth.tsv` | 2,206,821 | 127,153,605 | `a84b06e9275ad07dfcff4c281313788ff3f8379432bb69a0a038bf3cf3d3c734` |
-| `P1/data/entities/train/source1/train_s1_entities.parquet` | 2,206,821 | 374,324,534 | `d637f9e8a834246949397ea360fcbe4a87cbb5c814b30172bf4ea176dfaa025a` |
-| `P1/data/entities/train/source2/train_s2_entities.parquet` | 5,034,616 | 772,019,103 | `037b5145aa81e59bc7a61a0eb15b9c1dff62cfb37b019b882feeb2581023bc7e` |
-| `P1/data/entities/train/source3/train_s3_entities.parquet` | 4,874,271 | 754,233,485 | `2f9f170f212f4625b5a7dd6d69fae7c8ec17d5bf22fa59f518e3be8505ee6e3a` |
-| `P1/data/entities/test/source1/test_s1_entities.parquet` | 1,655,130 | 280,742,088 | `b7ec601cf9fbba3df8131cfa5eafe2a27891cf152ee9a18df73a9681bcfa6546` |
-| `P1/data/entities/test/source2/test_s2_entities.parquet` | 5,236,750 | 803,113,878 | `07f59da5088eb88e894220b30ef2f205c48b26ddce747bc2a6886e082c6114eb` |
-| `P1/data/entities/test/source3/test_s3_entities.parquet` | 5,191,894 | 803,198,187 | `f6c91350a41753c150cfa3413da6f48c08a5438809ba87754f9a031a0ceb3191` |
+| `data/train/train_ground_truth.tsv` | 2,206,821 | 127,015,583 | `70bc1d8a16c667e0155c2105d0ab2ebe41d7e7a85d8a529e3ca81c6c3a5af037` |
+| `P1/data/entities/train/source1/train_s1_entities.parquet` | 2,206,821 | 383,413,239 | `22a84062c98605ff94b3bd8d29629be9319aca72da4d9f7a2be03692949dab31` |
+| `P1/data/entities/train/source2/train_s2_entities.parquet` | 5,034,616 | 905,805,958 | `b8bcc95ddd650d78c7458ca320bbd1e1295d610d55f03f919a55f0d04516cc32` |
+| `P1/data/entities/train/source3/train_s3_entities.parquet` | 5,285,603 | 942,897,654 | `f1e0ace13b59ba2a84e696b2bc6fce2e65ce8fca219f6ac9368525582f9fc6f8` |
+| `P1/data/entities/test/source1/test_s1_entities.parquet` | 1,732,544 | 307,175,551 | `e6ff58d72b00001e9078094ec427799294cbe478a256c50eb3795ad1c8a5578c` |
+| `P1/data/entities/test/source2/test_s2_entities.parquet` | 4,887,273 | 904,777,638 | `62c74f7dfc62adc0497b88e663a6f4979e5138d370b72f0db829619aa5a73efe` |
+| `P1/data/entities/test/source3/test_s3_entities.parquet` | 5,082,316 | 919,998,403 | `f7748097ca62b213977de22ba3a29764a9c9697d9ea40857dbd7d06f9dcbaa8c` |
 
 ---
 

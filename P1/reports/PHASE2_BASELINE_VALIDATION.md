@@ -177,7 +177,7 @@ Downstream scripts [finish_pipeline.py](file:///Users/krishnagera/Amazon-ML-Chal
 
 ## 8. Candidate Fanout & Distribution Analysis
 
-Candidate fanout per S1 entity was computed across the entire entity pool (2,206,821 S1 entities for train; 1,655,130 S1 entities for test):
+Candidate fanout per S1 entity was computed across the entire entity pool (2,206,821 S1 entities for train; 1,732,544 S1 entities for test):
 
 | Candidate Set | Total S1 Pool | Zero Cand S1 | Zero Rate | Min | p50 (Median) | p90 | p95 | p99 | p99.9 | Max |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -187,12 +187,12 @@ Candidate fanout per S1 entity was computed across the entire entity pool (2,206
 | **V2 Train S2** | 2,206,821 | 277,448 | 12.57% | 0 | 3.0 | 38.0 | 70.0 | 154.0 | 373.0 | 1,477 |
 | **V2 Train S3** | 2,206,821 | 262,072 | 11.88% | 0 | 3.0 | 48.0 | 85.0 | 199.0 | 511.0 | 1,829 |
 | **V2 Train Combined** | 2,206,821 | 94,043 | 4.26% | 0 | 5.0 | 81.0 | 155.0 | 346.0 | 850.0 | 3,306 |
-| **V1 Test S2** | 1,655,130 | 254,483 | 15.38% | 0 | 3.0 | 45.0 | 96.0 | 219.0 | 408.0 | 1,510 |
-| **V1 Test S3** | 1,655,130 | 239,473 | 14.47% | 0 | 3.0 | 56.0 | 122.0 | 243.0 | 503.0 | 1,820 |
-| **V2 Test S2** | 1,655,130 | 206,207 | 12.46% | 0 | 3.0 | 55.0 | 111.0 | 239.0 | 488.0 | 1,703 |
-| **V2 Test S3** | 1,655,130 | 195,392 | 11.81% | 0 | 3.0 | 67.0 | 142.0 | 277.0 | 582.0 | 2,004 |
-| **Legacy Step 1 Test S2** | 1,655,130 | 400,630 | **24.21%** | 0 | 2.0 | 37.0 | 90.0 | 215.0 | 401.0 | 1,510 |
-| **Legacy Step 1 Test S3** | 1,655,130 | 381,967 | **23.08%** | 0 | 2.0 | 47.0 | 112.0 | 232.0 | 498.0 | 1,820 |
+| **V1 Test S2** | 1,732,544 | 254,483 | 14.69% | 0 | 3.0 | 45.0 | 96.0 | 219.0 | 408.0 | 1,510 |
+| **V1 Test S3** | 1,732,544 | 239,473 | 13.82% | 0 | 3.0 | 56.0 | 122.0 | 243.0 | 503.0 | 1,820 |
+| **V2 Test S2** | 1,732,544 | 206,207 | 11.90% | 0 | 3.0 | 55.0 | 111.0 | 239.0 | 488.0 | 1,703 |
+| **V2 Test S3** | 1,732,544 | 195,392 | 11.28% | 0 | 3.0 | 67.0 | 142.0 | 277.0 | 582.0 | 2,004 |
+| **Legacy Step 1 Test S2** | 1,732,544 | 400,630 | **23.12%** | 0 | 2.0 | 37.0 | 90.0 | 215.0 | 401.0 | 1,510 |
+| **Legacy Step 1 Test S3** | 1,732,544 | 381,967 | **22.05%** | 0 | 2.0 | 47.0 | 112.0 | 232.0 | 498.0 | 1,820 |
 
 ### Key Takeaway on Fanout
 - V2 successfully recovered 30,105 S1 entities that had zero candidates under V1 in training.
