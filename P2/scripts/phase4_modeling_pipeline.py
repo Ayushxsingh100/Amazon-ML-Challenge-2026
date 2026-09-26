@@ -218,258 +218,278 @@ def main():
         FROM read_parquet('{REPO}/P1/data/entities/train/source3/train_s3_entities.parquet');
     """)
 
-    print("\n" + "=" * 60)
-    print("STEP 5, 6 & 7: EXTRACTING TRAINING SAMPLE & FEATURES")
-    print("=" * 60)
-    print("Sampling S2 (100% positives + 10% deterministic hash negatives)...")
-    t0 = time.time()
-    con.execute(f"""
-        CREATE TABLE train_sample_s2 AS
-        SELECT 
-            c.source1_entity_id, c.matched_entity_id,
-            CASE WHEN gt.matched_entity_id IS NOT NULL THEN 1 ELSE 0 END AS label,
-            f.fold,
-            0 AS source_is_s3,
-            {FEATURE_SQL}
-        FROM read_csv('{TRAIN_S2_CAND}', delim='\\t', header=true, all_varchar=true) c
-        JOIN folds f ON c.source1_entity_id = f.source1_entity_id
-        JOIN train_s1 s1 ON c.source1_entity_id = s1.entity_id
-        JOIN train_s2 tgt ON c.matched_entity_id = tgt.entity_id
-        LEFT JOIN raw_gt gt ON c.source1_entity_id = gt.source1_entity_id AND c.matched_entity_id = gt.matched_entity_id
-        WHERE gt.matched_entity_id IS NOT NULL OR (ABS(hash(c.source1_entity_id || c.matched_entity_id)) % 10 = 0);
-    """)
-    s2_stats = con.execute("SELECT COUNT(*), SUM(label) FROM train_sample_s2").fetchone()
-    print(f"  S2 sample: {s2_stats[0]:,} rows ({s2_stats[1]:,} pos, {s2_stats[0]-s2_stats[1]:,} neg) in {time.time()-t0:.2f}s")
+    sweep_json_path = REPORT_DIR / "phase4_oof_sweep_results.json"
+    all_models_exist = all((MODEL_DIR / f"lgb_fold{f}.txt").exists() for f in range(5))
 
-    print("Sampling S3 (100% positives + 10% deterministic hash negatives)...")
-    t0 = time.time()
-    con.execute(f"""
-        CREATE TABLE train_sample_s3 AS
-        SELECT 
-            c.source1_entity_id, c.matched_entity_id,
-            CASE WHEN gt.matched_entity_id IS NOT NULL THEN 1 ELSE 0 END AS label,
-            f.fold,
-            1 AS source_is_s3,
-            {FEATURE_SQL}
-        FROM read_csv('{TRAIN_S3_CAND}', delim='\\t', header=true, all_varchar=true) c
-        JOIN folds f ON c.source1_entity_id = f.source1_entity_id
-        JOIN train_s1 s1 ON c.source1_entity_id = s1.entity_id
-        JOIN train_s3 tgt ON c.matched_entity_id = tgt.entity_id
-        LEFT JOIN raw_gt gt ON c.source1_entity_id = gt.source1_entity_id AND c.matched_entity_id = gt.matched_entity_id
-        WHERE gt.matched_entity_id IS NOT NULL OR (ABS(hash(c.source1_entity_id || c.matched_entity_id)) % 10 = 0);
-    """)
-    s3_stats = con.execute("SELECT COUNT(*), SUM(label) FROM train_sample_s3").fetchone()
-    print(f"  S3 sample: {s3_stats[0]:,} rows ({s3_stats[1]:,} pos, {s3_stats[0]-s3_stats[1]:,} neg) in {time.time()-t0:.2f}s")
+    if sweep_json_path.exists() and all_models_exist:
+        print("\nLoading cached models and OOF evaluation results...")
+        models = [lgb.Booster(model_file=str(MODEL_DIR / f"lgb_fold{f}.txt")) for f in range(5)]
+        with open(sweep_json_path, "r", encoding="utf-8") as f_sw:
+            cached_data = json.load(f_sw)
+        sweep_results = cached_data["sweep_results"]
+        best_res = max(sweep_results, key=lambda x: x["macro_f0.5"])
+        best_th = best_res["threshold"]
+        base_f0_macro = cached_data["experiments"]["baseline_fold0"]
+        exp1_f0_macro = cached_data["experiments"]["exp_mod_01_fold0"]
+        exp5_f0_macro = cached_data["experiments"]["exp_mod_05_fold0"]
+        print(f"  Loaded {len(models)} models from disk")
+        print(f"  Loaded threshold sweep results (Optimal T = {best_th:.2f})")
+        print(f"  Fold 0 Baseline Macro F0.5 @ T={best_th}: {base_f0_macro:.6f}")
+        print(f"  Fold 0 EXP-MOD-01 Macro F0.5 @ T={best_th}: {exp1_f0_macro:.6f}")
+        print(f"  Fold 0 EXP-MOD-05 Macro F0.5 @ T={best_th}: {exp5_f0_macro:.6f}")
+    else:
+        print("\n" + "=" * 60)
+        print("STEP 5, 6 & 7: EXTRACTING TRAINING SAMPLE & FEATURES")
+        print("=" * 60)
+        print("Sampling S2 (100% positives + 10% deterministic hash negatives)...")
+        t0 = time.time()
+        con.execute(f"""
+            CREATE TABLE train_sample_s2 AS
+            SELECT 
+                c.source1_entity_id, c.matched_entity_id,
+                CASE WHEN gt.matched_entity_id IS NOT NULL THEN 1 ELSE 0 END AS label,
+                f.fold,
+                0 AS source_is_s3,
+                {FEATURE_SQL}
+            FROM read_csv('{TRAIN_S2_CAND}', delim='\\t', header=true, all_varchar=true) c
+            JOIN folds f ON c.source1_entity_id = f.source1_entity_id
+            JOIN train_s1 s1 ON c.source1_entity_id = s1.entity_id
+            JOIN train_s2 tgt ON c.matched_entity_id = tgt.entity_id
+            LEFT JOIN raw_gt gt ON c.source1_entity_id = gt.source1_entity_id AND c.matched_entity_id = gt.matched_entity_id
+            WHERE gt.matched_entity_id IS NOT NULL OR (ABS(hash(c.source1_entity_id || c.matched_entity_id)) % 10 = 0);
+        """)
+        s2_stats = con.execute("SELECT COUNT(*), SUM(label) FROM train_sample_s2").fetchone()
+        print(f"  S2 sample: {s2_stats[0]:,} rows ({s2_stats[1]:,} pos, {s2_stats[0]-s2_stats[1]:,} neg) in {time.time()-t0:.2f}s")
 
-    print("\nCombining S2 and S3 into unified training dataframe...")
-    t0 = time.time()
-    con.execute("""
-        CREATE TABLE train_data AS
-        SELECT * FROM train_sample_s2
-        UNION ALL
-        SELECT * FROM train_sample_s3;
-    """)
-    con.execute("DROP TABLE train_sample_s2; DROP TABLE train_sample_s3;")
+        print("Sampling S3 (100% positives + 10% deterministic hash negatives)...")
+        t0 = time.time()
+        con.execute(f"""
+            CREATE TABLE train_sample_s3 AS
+            SELECT 
+                c.source1_entity_id, c.matched_entity_id,
+                CASE WHEN gt.matched_entity_id IS NOT NULL THEN 1 ELSE 0 END AS label,
+                f.fold,
+                1 AS source_is_s3,
+                {FEATURE_SQL}
+            FROM read_csv('{TRAIN_S3_CAND}', delim='\\t', header=true, all_varchar=true) c
+            JOIN folds f ON c.source1_entity_id = f.source1_entity_id
+            JOIN train_s1 s1 ON c.source1_entity_id = s1.entity_id
+            JOIN train_s3 tgt ON c.matched_entity_id = tgt.entity_id
+            LEFT JOIN raw_gt gt ON c.source1_entity_id = gt.source1_entity_id AND c.matched_entity_id = gt.matched_entity_id
+            WHERE gt.matched_entity_id IS NOT NULL OR (ABS(hash(c.source1_entity_id || c.matched_entity_id)) % 10 = 0);
+        """)
+        s3_stats = con.execute("SELECT COUNT(*), SUM(label) FROM train_sample_s3").fetchone()
+        print(f"  S3 sample: {s3_stats[0]:,} rows ({s3_stats[1]:,} pos, {s3_stats[0]-s3_stats[1]:,} neg) in {time.time()-t0:.2f}s")
 
-    df = con.execute("SELECT * FROM train_data").df()
-    con.execute("DROP TABLE train_data;")
-    gc.collect()
+        print("\nCombining S2 and S3 into unified training dataframe...")
+        t0 = time.time()
+        con.execute("""
+            CREATE TABLE train_data AS
+            SELECT * FROM train_sample_s2
+            UNION ALL
+            SELECT * FROM train_sample_s3;
+        """)
+        con.execute("DROP TABLE train_sample_s2; DROP TABLE train_sample_s3;")
 
-    print(f"  Total training sample: {len(df):,} rows (pos: {df['label'].sum():,}) in {time.time()-t0:.2f}s")
+        df = con.execute("SELECT * FROM train_data").df()
+        con.execute("DROP TABLE train_data;")
+        gc.collect()
 
-    # Downcast datatypes to optimize memory
-    for col in CANONICAL_FEATURES:
-        if col in CAT_FEATURES:
-            df[col] = df[col].astype("int8")
-        else:
-            df[col] = df[col].astype("float32")
-    df["label"] = df["label"].astype("int8")
-    df["fold"] = df["fold"].astype("int8")
+        print(f"  Total training sample: {len(df):,} rows (pos: {df['label'].sum():,}) in {time.time()-t0:.2f}s")
 
-    print("\n" + "=" * 60)
-    print("STEP 8 & 9: 5-FOLD LIGHTGBM TRAINING & OOF EVALUATION")
-    print("=" * 60)
+        # Downcast datatypes to optimize memory
+        for col in CANONICAL_FEATURES:
+            if col in CAT_FEATURES:
+                df[col] = df[col].astype("int8")
+            else:
+                df[col] = df[col].astype("float32")
+        df["label"] = df["label"].astype("int8")
+        df["fold"] = df["fold"].astype("int8")
 
-    # Initialize OOF prediction array
-    oof_preds = np.zeros(len(df), dtype=np.float32)
-    models = []
-    fold_train_times = []
+        print("\n" + "=" * 60)
+        print("STEP 8 & 9: 5-FOLD LIGHTGBM TRAINING & OOF EVALUATION")
+        print("=" * 60)
 
-    for fold in range(5):
-        print(f"\n--- Processing Fold {fold} ---")
-        t_fold = time.time()
-        train_idx = (df["fold"] != fold).to_numpy()
-        val_idx = (df["fold"] == fold).to_numpy()
+        # Initialize OOF prediction array
+        oof_preds = np.zeros(len(df), dtype=np.float32)
+        models = []
+        fold_train_times = []
 
-        X_train = df.loc[train_idx, CANONICAL_FEATURES]
-        y_train = df.loc[train_idx, "label"]
-        X_val = df.loc[val_idx, CANONICAL_FEATURES]
-        y_val = df.loc[val_idx, "label"]
+        for fold in range(5):
+            print(f"\n--- Processing Fold {fold} ---")
+            t_fold = time.time()
+            train_idx = (df["fold"] != fold).to_numpy()
+            val_idx = (df["fold"] == fold).to_numpy()
 
-        model_path = MODEL_DIR / f"lgb_fold{fold}.txt"
-        if model_path.exists():
-            print(f"  Loading existing model binary: {model_path.name}")
-            model = lgb.Booster(model_file=str(model_path))
-            fold_time = time.time() - t_fold
-        else:
-            trn_data = lgb.Dataset(X_train, label=y_train, categorical_feature=CAT_FEATURES, free_raw_data=False)
-            val_data = lgb.Dataset(X_val, label=y_val, reference=trn_data, categorical_feature=CAT_FEATURES, free_raw_data=False)
+            X_train = df.loc[train_idx, CANONICAL_FEATURES]
+            y_train = df.loc[train_idx, "label"]
+            X_val = df.loc[val_idx, CANONICAL_FEATURES]
+            y_val = df.loc[val_idx, "label"]
 
-            model = lgb.train(
-                LGB_PARAMS,
-                trn_data,
-                num_boost_round=NUM_BOOST_ROUND,
-                valid_sets=[trn_data, val_data],
-                valid_names=["train", "val"],
-                callbacks=[lgb.log_evaluation(period=100)],
-            )
-            fold_time = time.time() - t_fold
-            model.save_model(str(model_path))
-            print(f"  Saved model binary: {model_path.name}")
+            model_path = MODEL_DIR / f"lgb_fold{fold}.txt"
+            if model_path.exists():
+                print(f"  Loading existing model binary: {model_path.name}")
+                model = lgb.Booster(model_file=str(model_path))
+                fold_time = time.time() - t_fold
+            else:
+                trn_data = lgb.Dataset(X_train, label=y_train, categorical_feature=CAT_FEATURES, free_raw_data=False)
+                val_data = lgb.Dataset(X_val, label=y_val, reference=trn_data, categorical_feature=CAT_FEATURES, free_raw_data=False)
 
-        fold_train_times.append(fold_time)
-        print(f"  Fold {fold} ready in {fold_time:.2f}s ({len(X_train):,} train, {len(X_val):,} val)")
-        models.append(model)
+                model = lgb.train(
+                    LGB_PARAMS,
+                    trn_data,
+                    num_boost_round=NUM_BOOST_ROUND,
+                    valid_sets=[trn_data, val_data],
+                    valid_names=["train", "val"],
+                    callbacks=[lgb.log_evaluation(period=100)],
+                )
+                fold_time = time.time() - t_fold
+                model.save_model(str(model_path))
+                print(f"  Saved model binary: {model_path.name}")
 
-        # Predict OOF
-        val_preds = model.predict(X_val)
-        oof_preds[val_idx] = val_preds
+            fold_train_times.append(fold_time)
+            print(f"  Fold {fold} ready in {fold_time:.2f}s ({len(X_train):,} train, {len(X_val):,} val)")
+            models.append(model)
 
-    df["oof_prob"] = oof_preds
+            # Predict OOF
+            val_preds = model.predict(X_val)
+            oof_preds[val_idx] = val_preds
 
-    print("\n" + "=" * 60)
-    print("OOF THRESHOLD SWEEP & METRICS (Thresholds 0.10 to 0.90)")
-    print("=" * 60)
+        df["oof_prob"] = oof_preds
 
-    # Pre-extract ground truth dictionary for scorer_v1
-    print("Preparing validation entities ground truth map...")
-    gt_df = con.execute("SELECT source1_entity_id, matched_entity_id FROM raw_gt").df()
-    gt_map = {}
-    for s1_id, tgt_id in zip(gt_df["source1_entity_id"], gt_df["matched_entity_id"]):
-        if s1_id not in gt_map:
-            gt_map[s1_id] = set()
-        gt_map[s1_id].add(tgt_id)
+        print("\n" + "=" * 60)
+        print("OOF THRESHOLD SWEEP & METRICS (Thresholds 0.10 to 0.90)")
+        print("=" * 60)
 
-    # Extract all distinct S1 entities in train
-    all_train_s1 = set(con.execute("SELECT entity_id FROM train_s1").df()["entity_id"])
-    for s1 in all_train_s1:
-        if s1 not in gt_map:
-            gt_map[s1] = set()
+        # Pre-extract ground truth dictionary for scorer_v1
+        print("Preparing validation entities ground truth map...")
+        gt_df = con.execute("SELECT source1_entity_id, matched_entity_id FROM raw_gt").df()
+        gt_map = {}
+        for s1_id, tgt_id in zip(gt_df["source1_entity_id"], gt_df["matched_entity_id"]):
+            if s1_id not in gt_map:
+                gt_map[s1_id] = set()
+            gt_map[s1_id].add(tgt_id)
 
-    sweep_results = []
-    y_true = df["label"].to_numpy()
-    probs = df["oof_prob"].to_numpy()
+        # Extract all distinct S1 entities in train
+        all_train_s1 = set(con.execute("SELECT entity_id FROM train_s1").df()["entity_id"])
+        for s1 in all_train_s1:
+            if s1 not in gt_map:
+                gt_map[s1] = set()
 
-    for th in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
-        pred_bin = (probs >= th).astype(int)
-        tp = int(np.sum((pred_bin == 1) & (y_true == 1)))
-        fp = int(np.sum((pred_bin == 1) & (y_true == 0)))
-        fn = int(np.sum((pred_bin == 0) & (y_true == 1)))
-        tn = int(np.sum((pred_bin == 0) & (y_true == 0)))
+        sweep_results = []
+        y_true = df["label"].to_numpy()
+        probs = df["oof_prob"].to_numpy()
 
-        prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-        rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-        denom = 0.25 * prec + rec
-        f05 = (1.25 * prec * rec / denom) if denom > 0 else 0.0
+        for th in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+            pred_bin = (probs >= th).astype(int)
+            tp = int(np.sum((pred_bin == 1) & (y_true == 1)))
+            fp = int(np.sum((pred_bin == 1) & (y_true == 0)))
+            fn = int(np.sum((pred_bin == 0) & (y_true == 1)))
+            tn = int(np.sum((pred_bin == 0) & (y_true == 0)))
 
-        # Fast S1 macro evaluation on positive predictions
-        pos_df = df.loc[pred_bin == 1, ["source1_entity_id", "matched_entity_id"]]
-        pred_map = {}
-        for s1_id, tgt_id in zip(pos_df["source1_entity_id"], pos_df["matched_entity_id"]):
-            if s1_id not in pred_map:
-                pred_map[s1_id] = set()
-            pred_map[s1_id].add(tgt_id)
+            prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+            rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+            denom = 0.25 * prec + rec
+            f05 = (1.25 * prec * rec / denom) if denom > 0 else 0.0
 
-        # Score with scorer_v1
-        score_res = score_predictions(pred_map, gt_map, entity_ids=all_train_s1)
-        macro_f05 = score_res.get("macro_f0.5", 0.0)
+            # Fast S1 macro evaluation on positive predictions
+            pos_df = df.loc[pred_bin == 1, ["source1_entity_id", "matched_entity_id"]]
+            pred_map = {}
+            for s1_id, tgt_id in zip(pos_df["source1_entity_id"], pos_df["matched_entity_id"]):
+                if s1_id not in pred_map:
+                    pred_map[s1_id] = set()
+                pred_map[s1_id].add(tgt_id)
 
-        res_dict = {
-            "threshold": th,
-            "tp": tp,
-            "fp": fp,
-            "fn": fn,
-            "tn": tn,
-            "precision": prec,
-            "recall": rec,
-            "pairwise_f0.5": f05,
-            "macro_f0.5": macro_f05,
-            "pred_positives": int(np.sum(pred_bin)),
-        }
-        sweep_results.append(res_dict)
-        print(f"  T={th:.2f} | Prec: {prec:.4f} | Rec: {rec:.4f} | Pair-F0.5: {f05:.4f} | Macro-F0.5: {macro_f05:.6f} | Pos: {res_dict['pred_positives']:,}")
+            # Score with scorer_v1
+            score_res = score_predictions(pred_map, gt_map, entity_ids=all_train_s1)
+            macro_f05 = score_res.get("macro_f0.5", 0.0)
 
-    # Best threshold selection
-    best_res = max(sweep_results, key=lambda x: x["macro_f0.5"])
-    best_th = best_res["threshold"]
-    print(f"\nOptimal Threshold: T = {best_th:.2f} (Macro F0.5 = {best_res['macro_f0.5']:.6f})")
+            res_dict = {
+                "threshold": th,
+                "tp": tp,
+                "fp": fp,
+                "fn": fn,
+                "tn": tn,
+                "precision": prec,
+                "recall": rec,
+                "pairwise_f0.5": f05,
+                "macro_f0.5": macro_f05,
+                "pred_positives": int(np.sum(pred_bin)),
+            }
+            sweep_results.append(res_dict)
+            print(f"  T={th:.2f} | Prec: {prec:.4f} | Rec: {rec:.4f} | Pair-F0.5: {f05:.4f} | Macro-F0.5: {macro_f05:.6f} | Pos: {res_dict['pred_positives']:,}")
 
-    # Controlled Experiments (Step 11 & 12)
-    print("\n" + "=" * 60)
-    print("STEP 11 & 12: CONTROLLED MODEL EXPERIMENTS")
-    print("=" * 60)
+        # Best threshold selection
+        best_res = max(sweep_results, key=lambda x: x["macro_f0.5"])
+        best_th = best_res["threshold"]
+        print(f"\nOptimal Threshold: T = {best_th:.2f} (Macro F0.5 = {best_res['macro_f0.5']:.6f})")
+
+        # Controlled Experiments (Step 11 & 12)
+        print("\n" + "=" * 60)
+        print("STEP 11 & 12: CONTROLLED MODEL EXPERIMENTS")
+        print("=" * 60)
     
-    print("Evaluating Fold 0 Baseline at selected threshold...")
-    val_idx_0 = (df["fold"] == 0).to_numpy()
-    train_idx_0 = (df["fold"] != 0).to_numpy()
-    df_val_0 = df.loc[val_idx_0].copy()
+        print("Evaluating Fold 0 Baseline at selected threshold...")
+        val_idx_0 = (df["fold"] == 0).to_numpy()
+        train_idx_0 = (df["fold"] != 0).to_numpy()
+        df_val_0 = df.loc[val_idx_0].copy()
 
-    b0_pred = oof_preds[val_idx_0]
-    b0_bin = (b0_pred >= best_th).astype(int)
-    pos_df_b0 = df_val_0.loc[b0_bin == 1, ["source1_entity_id", "matched_entity_id"]]
-    pred_map_b0 = {}
-    for s1_id, tgt_id in zip(pos_df_b0["source1_entity_id"], pos_df_b0["matched_entity_id"]):
-        if s1_id not in pred_map_b0:
-            pred_map_b0[s1_id] = set()
-        pred_map_b0[s1_id].add(tgt_id)
-    fold0_s1 = set(df_val_0["source1_entity_id"])
-    base_f0_macro = score_predictions(pred_map_b0, gt_map, entity_ids=fold0_s1).get("macro_f0.5", 0.0)
+        b0_pred = oof_preds[val_idx_0]
+        b0_bin = (b0_pred >= best_th).astype(int)
+        pos_df_b0 = df_val_0.loc[b0_bin == 1, ["source1_entity_id", "matched_entity_id"]]
+        pred_map_b0 = {}
+        for s1_id, tgt_id in zip(pos_df_b0["source1_entity_id"], pos_df_b0["matched_entity_id"]):
+            if s1_id not in pred_map_b0:
+                pred_map_b0[s1_id] = set()
+            pred_map_b0[s1_id].add(tgt_id)
+        fold0_s1 = set(df_val_0["source1_entity_id"])
+        base_f0_macro = score_predictions(pred_map_b0, gt_map, entity_ids=fold0_s1).get("macro_f0.5", 0.0)
 
-    # EXP-MOD-01: Enhanced Name & Address Features on Fold 0
-    print("Running EXP-MOD-01 (Enhanced Features on Fold 0)...")
-    df["name_addr_jw_prod"] = (df["name_jaro_winkler"] * df["address_jaro_winkler"]).astype("float32")
-    df["name_addr_exact_prod"] = (df["name_exact_match"] * df["address_exact_match"]).astype("int8")
-    df_val_0["name_addr_jw_prod"] = (df_val_0["name_jaro_winkler"] * df_val_0["address_jaro_winkler"]).astype("float32")
-    df_val_0["name_addr_exact_prod"] = (df_val_0["name_exact_match"] * df_val_0["address_exact_match"]).astype("int8")
-    exp1_features = CANONICAL_FEATURES + ["name_addr_jw_prod", "name_addr_exact_prod"]
+        # EXP-MOD-01: Enhanced Name & Address Features on Fold 0
+        print("Running EXP-MOD-01 (Enhanced Features on Fold 0)...")
+        df["name_addr_jw_prod"] = (df["name_jaro_winkler"] * df["address_jaro_winkler"]).astype("float32")
+        df["name_addr_exact_prod"] = (df["name_exact_match"] * df["address_exact_match"]).astype("int8")
+        df_val_0["name_addr_jw_prod"] = (df_val_0["name_jaro_winkler"] * df_val_0["address_jaro_winkler"]).astype("float32")
+        df_val_0["name_addr_exact_prod"] = (df_val_0["name_exact_match"] * df_val_0["address_exact_match"]).astype("int8")
+        exp1_features = CANONICAL_FEATURES + ["name_addr_jw_prod", "name_addr_exact_prod"]
     
-    trn_data_exp1 = lgb.Dataset(df.loc[train_idx_0, exp1_features], label=df.loc[train_idx_0, "label"], categorical_feature=CAT_FEATURES + ["name_addr_exact_prod"], free_raw_data=False)
-    val_data_exp1 = lgb.Dataset(df_val_0[exp1_features], label=df_val_0["label"], reference=trn_data_exp1, categorical_feature=CAT_FEATURES + ["name_addr_exact_prod"], free_raw_data=False)
-    m_exp1 = lgb.train(LGB_PARAMS, trn_data_exp1, num_boost_round=NUM_BOOST_ROUND, valid_sets=[val_data_exp1], callbacks=[lgb.log_evaluation(period=0)])
-    p_exp1 = m_exp1.predict(df_val_0[exp1_features])
-    bin_exp1 = (p_exp1 >= best_th).astype(int)
-    pos_df_e1 = df_val_0.loc[bin_exp1 == 1, ["source1_entity_id", "matched_entity_id"]]
-    pred_map_e1 = {}
-    for s1_id, tgt_id in zip(pos_df_e1["source1_entity_id"], pos_df_e1["matched_entity_id"]):
-        if s1_id not in pred_map_e1:
-            pred_map_e1[s1_id] = set()
-        pred_map_e1[s1_id].add(tgt_id)
-    exp1_f0_macro = score_predictions(pred_map_e1, gt_map, entity_ids=fold0_s1).get("macro_f0.5", 0.0)
+        trn_data_exp1 = lgb.Dataset(df.loc[train_idx_0, exp1_features], label=df.loc[train_idx_0, "label"], categorical_feature=CAT_FEATURES + ["name_addr_exact_prod"], free_raw_data=False)
+        val_data_exp1 = lgb.Dataset(df_val_0[exp1_features], label=df_val_0["label"], reference=trn_data_exp1, categorical_feature=CAT_FEATURES + ["name_addr_exact_prod"], free_raw_data=False)
+        m_exp1 = lgb.train(LGB_PARAMS, trn_data_exp1, num_boost_round=NUM_BOOST_ROUND, valid_sets=[val_data_exp1], callbacks=[lgb.log_evaluation(period=0)])
+        p_exp1 = m_exp1.predict(df_val_0[exp1_features])
+        bin_exp1 = (p_exp1 >= best_th).astype(int)
+        pos_df_e1 = df_val_0.loc[bin_exp1 == 1, ["source1_entity_id", "matched_entity_id"]]
+        pred_map_e1 = {}
+        for s1_id, tgt_id in zip(pos_df_e1["source1_entity_id"], pos_df_e1["matched_entity_id"]):
+            if s1_id not in pred_map_e1:
+                pred_map_e1[s1_id] = set()
+            pred_map_e1[s1_id].add(tgt_id)
+        exp1_f0_macro = score_predictions(pred_map_e1, gt_map, entity_ids=fold0_s1).get("macro_f0.5", 0.0)
 
-    # EXP-MOD-05: Class Weighting (scale_pos_weight = 1.5) on Fold 0
-    print("Running EXP-MOD-05 (Class Weighting on Fold 0)...")
-    params_exp5 = dict(LGB_PARAMS)
-    params_exp5["scale_pos_weight"] = 1.5
-    trn_data_0 = lgb.Dataset(df.loc[train_idx_0, CANONICAL_FEATURES], label=df.loc[train_idx_0, "label"], categorical_feature=CAT_FEATURES, free_raw_data=False)
-    val_data_0 = lgb.Dataset(df_val_0[CANONICAL_FEATURES], label=df_val_0["label"], reference=trn_data_0, categorical_feature=CAT_FEATURES, free_raw_data=False)
-    m_exp5 = lgb.train(params_exp5, trn_data_0, num_boost_round=NUM_BOOST_ROUND, valid_sets=[val_data_0], callbacks=[lgb.log_evaluation(period=0)])
-    p_exp5 = m_exp5.predict(df_val_0[CANONICAL_FEATURES])
-    bin_exp5 = (p_exp5 >= best_th).astype(int)
-    pos_df_e5 = df_val_0.loc[bin_exp5 == 1, ["source1_entity_id", "matched_entity_id"]]
-    pred_map_e5 = {}
-    for s1_id, tgt_id in zip(pos_df_e5["source1_entity_id"], pos_df_e5["matched_entity_id"]):
-        if s1_id not in pred_map_e5:
-            pred_map_e5[s1_id] = set()
-        pred_map_e5[s1_id].add(tgt_id)
-    exp5_f0_macro = score_predictions(pred_map_e5, gt_map, entity_ids=fold0_s1).get("macro_f0.5", 0.0)
+        # EXP-MOD-05: Class Weighting (scale_pos_weight = 1.5) on Fold 0
+        print("Running EXP-MOD-05 (Class Weighting on Fold 0)...")
+        params_exp5 = dict(LGB_PARAMS)
+        params_exp5["scale_pos_weight"] = 1.5
+        trn_data_0 = lgb.Dataset(df.loc[train_idx_0, CANONICAL_FEATURES], label=df.loc[train_idx_0, "label"], categorical_feature=CAT_FEATURES, free_raw_data=False)
+        val_data_0 = lgb.Dataset(df_val_0[CANONICAL_FEATURES], label=df_val_0["label"], reference=trn_data_0, categorical_feature=CAT_FEATURES, free_raw_data=False)
+        m_exp5 = lgb.train(params_exp5, trn_data_0, num_boost_round=NUM_BOOST_ROUND, valid_sets=[val_data_0], callbacks=[lgb.log_evaluation(period=0)])
+        p_exp5 = m_exp5.predict(df_val_0[CANONICAL_FEATURES])
+        bin_exp5 = (p_exp5 >= best_th).astype(int)
+        pos_df_e5 = df_val_0.loc[bin_exp5 == 1, ["source1_entity_id", "matched_entity_id"]]
+        pred_map_e5 = {}
+        for s1_id, tgt_id in zip(pos_df_e5["source1_entity_id"], pos_df_e5["matched_entity_id"]):
+            if s1_id not in pred_map_e5:
+                pred_map_e5[s1_id] = set()
+            pred_map_e5[s1_id].add(tgt_id)
+        exp5_f0_macro = score_predictions(pred_map_e5, gt_map, entity_ids=fold0_s1).get("macro_f0.5", 0.0)
 
-    print(f"  Fold 0 Baseline Macro F0.5 @ T={best_th}: {base_f0_macro:.6f}")
-    print(f"  Fold 0 EXP-MOD-01 Macro F0.5 @ T={best_th}: {exp1_f0_macro:.6f}")
-    print(f"  Fold 0 EXP-MOD-05 Macro F0.5 @ T={best_th}: {exp5_f0_macro:.6f}")
+        print(f"  Fold 0 Baseline Macro F0.5 @ T={best_th}: {base_f0_macro:.6f}")
+        print(f"  Fold 0 EXP-MOD-01 Macro F0.5 @ T={best_th}: {exp1_f0_macro:.6f}")
+        print(f"  Fold 0 EXP-MOD-05 Macro F0.5 @ T={best_th}: {exp5_f0_macro:.6f}")
 
-    # Clean up train df from memory before test inference
-    del df, df_val_0, X_train, X_val, m_exp5, trn_data_0, val_data_0, m_exp1, trn_data_exp1, val_data_exp1
-    gc.collect()
+        # Clean up train df from memory before test inference
+        del df, df_val_0, X_train, X_val, m_exp5, trn_data_0, val_data_0, m_exp1, trn_data_exp1, val_data_exp1
+        gc.collect()
 
     print("\n" + "=" * 60)
     print("STEP 13 & 14: TEST PREDICTION GENERATION & INTEGRITY")
@@ -500,70 +520,94 @@ def main():
     test_integrity_reports = {}
 
     for src_name, cand_file, tgt_table, is_s3, out_file in test_specs:
-        print(f"\nScoring Test {src_name} Candidates: {cand_file.name} -> {out_file.name}...")
+        expected_rows = 43_841_928 if src_name == "S2" else 51_354_667
+        print(f"\nEvaluating Test {src_name} Candidates: {cand_file.name} -> {out_file.name}...")
         t_src = time.time()
-        
-        chunk_size = 5_000_000
-        written_rows = 0
-        pos_preds = 0
-        null_s1 = 0
-        null_tgt = 0
-        is_first_chunk = True
 
-        with open(out_file, "w", encoding="utf-8") as f_out:
-            for chunk_idx, cand_chunk in enumerate(pd.read_csv(cand_file, sep="\t", chunksize=chunk_size)):
-                t_c = time.time()
-                con.register("cur_cand_chunk", cand_chunk)
+        skip_scoring = False
+        if out_file.exists() and out_file.stat().st_size > 0:
+            print(f"  Checking existing file {out_file.name} ({out_file.stat().st_size / (1024**3):.2f} GB)...")
+            try:
+                curr_cnt = int(con.execute(f"SELECT COUNT(*) FROM read_csv('{out_file}', delim='\\t', header=true, all_varchar=true)").fetchone()[0])
+                if curr_cnt == expected_rows:
+                    print(f"  {out_file.name} already completely generated with {curr_cnt:,} rows! Skipping re-scoring.")
+                    skip_scoring = True
+                    written_rows = curr_cnt
+                    stats = con.execute(f"""
+                        SELECT 
+                            SUM(CASE WHEN predicted_match_label = '1' THEN 1 ELSE 0 END),
+                            SUM(CASE WHEN source1_entity_id IS NULL THEN 1 ELSE 0 END),
+                            SUM(CASE WHEN candidate_entity_id IS NULL THEN 1 ELSE 0 END)
+                        FROM read_csv('{out_file}', delim='\\t', header=true, all_varchar=true)
+                    """).fetchone()
+                    pos_preds = int(stats[0])
+                    null_s1 = int(stats[1])
+                    null_tgt = int(stats[2])
+                else:
+                    print(f"  Existing file has {curr_cnt:,} rows != expected {expected_rows:,} rows. Regenerating cleanly.")
+            except Exception as e:
+                print(f"  Error reading existing file: {e}. Regenerating cleanly.")
 
-                feat_df = con.execute(f"""
-                    SELECT 
-                        c.source1_entity_id, c.matched_entity_id,
-                        {is_s3} AS source_is_s3,
-                        {FEATURE_SQL}
-                    FROM cur_cand_chunk c
-                    JOIN test_s1 s1 ON c.source1_entity_id = s1.entity_id
-                    JOIN {tgt_table} tgt ON c.matched_entity_id = tgt.entity_id;
-                """).df()
+        if not skip_scoring:
+            chunk_size = 2_500_000
+            written_rows = 0
+            pos_preds = 0
+            null_s1 = 0
+            null_tgt = 0
+            is_first_chunk = True
 
-                for col in CANONICAL_FEATURES:
-                    if col in CAT_FEATURES:
-                        feat_df[col] = feat_df[col].astype("int8")
-                    else:
-                        feat_df[col] = feat_df[col].astype("float32")
+            with open(out_file, "w", encoding="utf-8") as f_out:
+                for chunk_idx, cand_chunk in enumerate(pd.read_csv(cand_file, sep="\t", chunksize=chunk_size)):
+                    t_c = time.time()
+                    con.register("cur_cand_chunk", cand_chunk)
 
-                X_chunk = feat_df[CANONICAL_FEATURES]
+                    feat_df = con.execute(f"""
+                        SELECT 
+                            c.source1_entity_id, c.matched_entity_id,
+                            {is_s3} AS source_is_s3,
+                            {FEATURE_SQL}
+                        FROM cur_cand_chunk c
+                        JOIN test_s1 s1 ON c.source1_entity_id = s1.entity_id
+                        JOIN {tgt_table} tgt ON c.matched_entity_id = tgt.entity_id;
+                    """).df()
 
-                # Ensemble prediction
-                c_probs = np.zeros(len(feat_df), dtype=np.float32)
-                for m in models:
-                    c_probs += m.predict(X_chunk) / len(models)
+                    for col in CANONICAL_FEATURES:
+                        if col in CAT_FEATURES:
+                            feat_df[col] = feat_df[col].astype("int8")
+                        else:
+                            feat_df[col] = feat_df[col].astype("float32")
 
-                c_labels = (c_probs >= best_th).astype(np.int8)
+                    X_chunk = feat_df[CANONICAL_FEATURES]
 
-                # Null checks
-                null_s1 += int(feat_df["source1_entity_id"].isnull().sum())
-                null_tgt += int(feat_df["matched_entity_id"].isnull().sum())
-                pos_preds += int(np.sum(c_labels == 1))
+                    # Ensemble prediction
+                    c_probs = np.zeros(len(feat_df), dtype=np.float32)
+                    for m in models:
+                        c_probs += m.predict(X_chunk) / len(models)
 
-                # Build output dataframe
-                out_chunk = pd.DataFrame({
-                    "source1_entity_id": feat_df["source1_entity_id"],
-                    "candidate_entity_id": feat_df["matched_entity_id"],
-                    "model_score": np.round(c_probs, 4),
-                    "predicted_match_label": c_labels,
-                    "source_dataset": src_name,
-                    "model_version": "LightGBM_5Fold_v1",
-                    "feature_version": "v1_canonical_19",
-                })
+                    c_labels = (c_probs >= best_th).astype(np.int8)
 
-                out_chunk.to_csv(f_out, sep="\t", index=False, header=is_first_chunk)
-                is_first_chunk = False
-                written_rows += len(out_chunk)
-                print(f"    Chunk {chunk_idx + 1}: {written_rows:,} rows scored and written in {time.time()-t_c:.2f}s")
+                    # Null checks
+                    null_s1 += int(feat_df["source1_entity_id"].isnull().sum())
+                    null_tgt += int(feat_df["matched_entity_id"].isnull().sum())
+                    pos_preds += int(np.sum(c_labels == 1))
 
-                del cand_chunk, feat_df, X_chunk, c_probs, c_labels, out_chunk
-                con.unregister("cur_cand_chunk")
-                gc.collect()
+                    # Build output dataframe
+                    out_chunk = pd.DataFrame({
+                        "source1_entity_id": feat_df["source1_entity_id"],
+                        "candidate_entity_id": feat_df["matched_entity_id"],
+                        "model_score": np.round(c_probs, 4),
+                        "predicted_match_label": c_labels,
+                    })
+
+                    out_chunk.to_csv(f_out, sep="\t", index=False, header=is_first_chunk)
+                    f_out.flush()
+                    is_first_chunk = False
+                    written_rows += len(out_chunk)
+                    print(f"    Chunk {chunk_idx + 1}: {written_rows:,} rows scored and written in {time.time()-t_c:.2f}s")
+
+                    del cand_chunk, feat_df, X_chunk, c_probs, c_labels, out_chunk
+                    con.unregister("cur_cand_chunk")
+                    gc.collect()
 
         out_hash = sha256_file(out_file)
         out_size = out_file.stat().st_size
