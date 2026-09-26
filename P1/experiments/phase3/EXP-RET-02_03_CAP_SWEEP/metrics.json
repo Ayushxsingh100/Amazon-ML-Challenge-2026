@@ -1,0 +1,453 @@
+{
+  "metrics": [
+    {
+      "configuration": "EXPERIMENT A",
+      "description": "V2 + EXP-01 + EXP-04 (Control)",
+      "cap_exp02": null,
+      "cap_exp03": null,
+      "train": {
+        "s2_candidates": 38399067,
+        "s3_candidates": 45843560,
+        "total_candidates": 84242627,
+        "s2_captured": 2592849,
+        "s3_captured": 2750128,
+        "combined_captured": 5342977,
+        "s2_recall": 0.7019806320034633,
+        "s3_recall": 0.6971622507507454,
+        "combined_recall": 0.6994922342674119,
+        "missed_pairs": 2295388,
+        "zero_s1": 54558,
+        "p50": 7.0,
+        "p90": 116.0,
+        "p95": 177.0,
+        "p99": 366.0,
+        "p999": 879.0,
+        "max": 3306,
+        "elapsed_s": 4.54
+      },
+      "test": {
+        "s2_candidates": 41320581,
+        "s3_candidates": 49134474,
+        "total_candidates": 90455055,
+        "zero_s1": 39697,
+        "p50": 8.0,
+        "p90": 143.0,
+        "p95": 277.0,
+        "p99": 555.0,
+        "p999": 1085.0,
+        "max": 3708,
+        "ge_300": 76937,
+        "ge_500": 22549,
+        "ge_1000": 2613,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 8.51
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    },
+    {
+      "configuration": "EXPERIMENT B",
+      "description": "V2 + EXP-01 + EXP-02 (cap=100) + EXP-04",
+      "cap_exp02": 100,
+      "cap_exp03": null,
+      "train": {
+        "s2_candidates": 40885609,
+        "s3_candidates": 48436146,
+        "total_candidates": 89321755,
+        "s2_captured": 2625598,
+        "s3_captured": 2790143,
+        "combined_captured": 5415741,
+        "s2_recall": 0.7108470039817317,
+        "s3_recall": 0.7073061231318822,
+        "combined_recall": 0.7090183566771161,
+        "missed_pairs": 2222624,
+        "zero_s1": 47765,
+        "p50": 8.0,
+        "p90": 121.0,
+        "p95": 185.0,
+        "p99": 376.0,
+        "p999": 884.0,
+        "max": 3311,
+        "elapsed_s": 6.63
+      },
+      "test": {
+        "s2_candidates": 44027740,
+        "s3_candidates": 51940669,
+        "total_candidates": 95968409,
+        "zero_s1": 33692,
+        "p50": 10.0,
+        "p90": 154.0,
+        "p95": 289.0,
+        "p99": 559.0,
+        "p999": 1087.0,
+        "max": 3708,
+        "ge_300": 81675,
+        "ge_500": 23116,
+        "ge_1000": 2654,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 14.24
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    },
+    {
+      "configuration": "EXPERIMENT C",
+      "description": "V2 + EXP-01 + EXP-03 (cap=100) + EXP-04",
+      "cap_exp02": null,
+      "cap_exp03": 100,
+      "train": {
+        "s2_candidates": 44051749,
+        "s3_candidates": 51381078,
+        "total_candidates": 95432827,
+        "s2_captured": 2667437,
+        "s3_captured": 2821647,
+        "combined_captured": 5489084,
+        "s2_recall": 0.7221743769457543,
+        "s3_recall": 0.715292442149634,
+        "combined_recall": 0.7186202806490656,
+        "missed_pairs": 2149281,
+        "zero_s1": 44343,
+        "p50": 9.0,
+        "p90": 127.0,
+        "p95": 191.0,
+        "p99": 375.0,
+        "p999": 883.0,
+        "max": 3311,
+        "elapsed_s": 8.05
+      },
+      "test": {
+        "s2_candidates": 44934916,
+        "s3_candidates": 52375808,
+        "total_candidates": 97310724,
+        "zero_s1": 33434,
+        "p50": 10.0,
+        "p90": 158.0,
+        "p95": 290.0,
+        "p99": 559.0,
+        "p999": 1086.4569999999367,
+        "max": 3708,
+        "ge_300": 82438,
+        "ge_500": 23179,
+        "ge_1000": 2654,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 21.03
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    },
+    {
+      "configuration": "EXPERIMENT D",
+      "description": "EXP-02 cap=50, EXP-03 cap=50",
+      "cap_exp02": 50,
+      "cap_exp03": 50,
+      "train": {
+        "s2_candidates": 42933945,
+        "s3_candidates": 50238004,
+        "total_candidates": 93171949,
+        "s2_captured": 2677201,
+        "s3_captured": 2834785,
+        "combined_captured": 5511986,
+        "s2_recall": 0.7248178547922782,
+        "s3_recall": 0.7186229480934894,
+        "combined_recall": 0.7216185662769454,
+        "missed_pairs": 2126379,
+        "zero_s1": 42938,
+        "p50": 9.0,
+        "p90": 123.0,
+        "p95": 184.0,
+        "p99": 369.0,
+        "p999": 881.0,
+        "max": 3311,
+        "elapsed_s": 9.77
+      },
+      "test": {
+        "s2_candidates": 43841928,
+        "s3_candidates": 51354667,
+        "total_candidates": 95196595,
+        "zero_s1": 33425,
+        "p50": 10.0,
+        "p90": 151.0,
+        "p95": 280.0,
+        "p99": 556.0,
+        "p999": 1086.0,
+        "max": 3708,
+        "ge_300": 78117,
+        "ge_500": 22698,
+        "ge_1000": 2628,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 26.16
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    },
+    {
+      "configuration": "EXPERIMENT E",
+      "description": "EXP-02 cap=30, EXP-03 cap=30",
+      "cap_exp02": 30,
+      "cap_exp03": 30,
+      "train": {
+        "s2_candidates": 41235528,
+        "s3_candidates": 48593767,
+        "total_candidates": 89829295,
+        "s2_captured": 2670837,
+        "s3_captured": 2827981,
+        "combined_captured": 5498818,
+        "s2_recall": 0.7230948833650682,
+        "s3_recall": 0.7168981222111639,
+        "combined_recall": 0.7198946371376597,
+        "missed_pairs": 2139547,
+        "zero_s1": 43602,
+        "p50": 9.0,
+        "p90": 119.0,
+        "p95": 179.0,
+        "p99": 367.0,
+        "p999": 879.0,
+        "max": 3306,
+        "elapsed_s": 9.47
+      },
+      "test": {
+        "s2_candidates": 43057410,
+        "s3_candidates": 50677921,
+        "total_candidates": 93735331,
+        "zero_s1": 33446,
+        "p50": 10.0,
+        "p90": 145.0,
+        "p95": 278.0,
+        "p99": 555.0,
+        "p999": 1085.0,
+        "max": 3708,
+        "ge_300": 77319,
+        "ge_500": 22606,
+        "ge_1000": 2617,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 21.88
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    },
+    {
+      "configuration": "EXPERIMENT F",
+      "description": "EXP-02 cap=25, EXP-03 cap=25",
+      "cap_exp02": 25,
+      "cap_exp03": 25,
+      "train": {
+        "s2_candidates": 40794953,
+        "s3_candidates": 48145484,
+        "total_candidates": 88940437,
+        "s2_captured": 2668550,
+        "s3_captured": 2825312,
+        "combined_captured": 5493862,
+        "s2_recall": 0.7224757074294885,
+        "s3_recall": 0.7162215260500929,
+        "combined_recall": 0.7192458071851764,
+        "missed_pairs": 2144503,
+        "zero_s1": 43899,
+        "p50": 9.0,
+        "p90": 118.0,
+        "p95": 179.0,
+        "p99": 366.0,
+        "p999": 879.0,
+        "max": 3306,
+        "elapsed_s": 9.98
+      },
+      "test": {
+        "s2_candidates": 42834813,
+        "s3_candidates": 50477225,
+        "total_candidates": 93312038,
+        "zero_s1": 33460,
+        "p50": 10.0,
+        "p90": 144.0,
+        "p95": 278.0,
+        "p99": 555.0,
+        "p999": 1085.0,
+        "max": 3708,
+        "ge_300": 77187,
+        "ge_500": 22577,
+        "ge_1000": 2616,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 13.79
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    },
+    {
+      "configuration": "EXPERIMENT G",
+      "description": "EXP-02 cap=20, EXP-03 cap=20",
+      "cap_exp02": 20,
+      "cap_exp03": 20,
+      "train": {
+        "s2_candidates": 40316269,
+        "s3_candidates": 47685934,
+        "total_candidates": 88002203,
+        "s2_captured": 2665285,
+        "s3_captured": 2822012,
+        "combined_captured": 5487297,
+        "s2_recall": 0.721591750529765,
+        "s3_recall": 0.7153849702870603,
+        "combined_recall": 0.7183863300588542,
+        "missed_pairs": 2151068,
+        "zero_s1": 44259,
+        "p50": 9.0,
+        "p90": 117.0,
+        "p95": 178.0,
+        "p99": 366.0,
+        "p999": 879.0,
+        "max": 3306,
+        "elapsed_s": 13.18
+      },
+      "test": {
+        "s2_candidates": 42585581,
+        "s3_candidates": 50257245,
+        "total_candidates": 92842826,
+        "zero_s1": 33500,
+        "p50": 10.0,
+        "p90": 144.0,
+        "p95": 277.0,
+        "p99": 555.0,
+        "p999": 1085.0,
+        "max": 3708,
+        "ge_300": 77100,
+        "ge_500": 22568,
+        "ge_1000": 2614,
+        "integrity": {
+          "duplicates": 0,
+          "null_s1": 0,
+          "null_tgt": 0,
+          "self_matches": 0,
+          "cross_country": 0,
+          "passed": true
+        },
+        "elapsed_s": 15.34
+      },
+      "integrity": {
+        "duplicates": 0,
+        "null_s1": 0,
+        "null_tgt": 0,
+        "self_matches": 0,
+        "cross_country": 0,
+        "passed": true
+      },
+      "gate_check": {
+        "test_p95_le_300": true,
+        "train_recall_gt_v2": true,
+        "passed_both_gates": true
+      }
+    }
+  ],
+  "selected_configuration": "EXPERIMENT D",
+  "selected_sha256": {
+    "train_candidate_pairs_s2_selected.tsv": "61d5dce6389bf424daf61f842ed0f41ebc3991fa27763d4641c4ab4931a7508c",
+    "train_candidate_pairs_s3_selected.tsv": "d5e90bb6d9a5d81154a83366d98211352e95bebcbc84c5011f14cd0bfe10eeeb",
+    "test_candidate_pairs_s2_selected.tsv": "4aa0c71ea70a98aff77088da2c4b070e8fb305b8fbebfbda4daa4fa14398dfa2",
+    "test_candidate_pairs_s3_selected.tsv": "f24041fbbc3a5f56a4b9c26b20dfde3377770f85427a9373bc9c1efc8bf441cd"
+  },
+  "total_elapsed_seconds": 325.73
+}

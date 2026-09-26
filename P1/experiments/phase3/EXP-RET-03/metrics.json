@@ -1,0 +1,42 @@
+{
+  "experiment": "EXP-RET-03",
+  "description": "Indic / Transliteration-Aware Retrieval (ISO 15919 / Hunterian Transliteration + Cross-Script Address Blocking)",
+  "v2_baseline_recall": 0.657623,
+  "combined_recall": 0.6795998881959686,
+  "recall_delta": 0.021976888195968658,
+  "total_candidates": 83079125,
+  "candidate_delta": 15746601,
+  "captured_pairs": 5191032,
+  "new_captured_pairs": 167864,
+  "missed_pairs": 2447333,
+  "zero_candidate_s1": 77807,
+  "zero_candidate_delta": -16236,
+  "fanout_p50": 7.0,
+  "fanout_p90": 99.0,
+  "fanout_p95": 179.0,
+  "fanout_p99": 425.0,
+  "fanout_p999": 1024.0,
+  "fanout_max": 3311,
+  "fanout_constraint_p95_le_300": "PASS",
+  "status": "ACCEPTED",
+  "s2_metrics": {
+    "raw_candidates": 17823367,
+    "combined_candidates": 38059738,
+    "captured": 2523612,
+    "new_captured": 85037,
+    "gt_total": 3693619,
+    "recall": 0.6832356017228631,
+    "artifact": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-03/train_candidates_s2_exp_ret_03.tsv"
+  },
+  "s3_metrics": {
+    "raw_candidates": 20975076,
+    "combined_candidates": 45019387,
+    "captured": 2667420,
+    "new_captured": 82827,
+    "gt_total": 3944746,
+    "recall": 0.6761956283116834,
+    "artifact": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-03/train_candidates_s3_exp_ret_03.tsv"
+  },
+  "total_runtime_seconds": 50.07,
+  "timestamp": "2026-09-26T15:06:29.467738+00:00"
+}

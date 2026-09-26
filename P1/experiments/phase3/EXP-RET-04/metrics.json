@@ -1,0 +1,42 @@
+{
+  "experiment": "EXP-RET-04",
+  "description": "Locality + Name Retrieval (Address 10-char shingle + name_prefix_3 + Postal Code / Root Token)",
+  "v2_baseline_recall": 0.657623,
+  "combined_recall": 0.6696951507292463,
+  "recall_delta": 0.01207215072924639,
+  "total_candidates": 68649982,
+  "candidate_delta": 1317458,
+  "captured_pairs": 5115376,
+  "new_captured_pairs": 92208,
+  "missed_pairs": 2522989,
+  "zero_candidate_s1": 81195,
+  "zero_candidate_delta": -12848,
+  "fanout_p50": 6.0,
+  "fanout_p90": 83.0,
+  "fanout_p95": 158.0,
+  "fanout_p99": 353.0,
+  "fanout_p999": 865.0,
+  "fanout_max": 3306,
+  "fanout_constraint_p95_le_300": "PASS",
+  "status": "ACCEPTED",
+  "s2_metrics": {
+    "raw_candidates": 2258676,
+    "combined_candidates": 31345345,
+    "captured": 2477561,
+    "new_captured": 38986,
+    "gt_total": 3693619,
+    "recall": 0.6707678837476199,
+    "artifact": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-04/train_candidates_s2_exp_ret_04.tsv"
+  },
+  "s3_metrics": {
+    "raw_candidates": 1531757,
+    "combined_candidates": 37304637,
+    "captured": 2637815,
+    "new_captured": 53222,
+    "gt_total": 3944746,
+    "recall": 0.668690709110295,
+    "artifact": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-04/train_candidates_s3_exp_ret_04.tsv"
+  },
+  "total_runtime_seconds": 16.12,
+  "timestamp": "2026-09-26T15:14:12.407504+00:00"
+}

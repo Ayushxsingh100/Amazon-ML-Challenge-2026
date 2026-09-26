@@ -27,3 +27,5 @@ P2/data/
 P2/models/
 P2/reports/E02_OOF_FULL_CANONICAL.tsv
 P2/reports/E06_V2_OOF_FULL_CANONICAL.tsv
+
+/.git/index.lock

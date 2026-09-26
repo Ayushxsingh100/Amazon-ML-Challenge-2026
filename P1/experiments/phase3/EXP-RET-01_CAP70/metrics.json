@@ -1,0 +1,108 @@
+{
+  "experiment": "EXP-RET-01_CAP70",
+  "description": "Controlled fanout correction experiment setting EXP-RET-01 per-S1 cap to 70",
+  "timestamp": "2026-09-26T18:32:25Z",
+  "total_runtime_seconds": 178.7155339717865,
+  "v2_baseline_recall": 0.657623,
+  "current_v3_metrics": {
+    "train_recall": 0.724229,
+    "train_p95": 199.0,
+    "test_p95": 318.0,
+    "train_zero_s1": 42613,
+    "test_zero_s1": 33407
+  },
+  "cap70_metrics": {
+    "train_candidate_count": 100472073,
+    "train_s2_candidates": 46053622,
+    "train_s3_candidates": 54418451,
+    "test_s2_candidates": 48148873,
+    "test_s3_candidates": 55658191,
+    "gt_total": 7638365,
+    "captured_true_pairs": 5527629,
+    "missed_true_pairs": 2110736,
+    "train_s2_recall": 0.7268291613184793,
+    "train_s3_recall": 0.7207052114382015,
+    "train_combined_recall": 0.7236665176382642,
+    "train_combined_recall_delta_vs_v2": 0.06604351763826422,
+    "train_combined_recall_delta_vs_v3": -0.0005624823617358388,
+    "train_fanout": {
+      "zero_s1": 42613,
+      "p50": 10.0,
+      "p90": 119.0,
+      "p95": 196.0,
+      "p99": 467.0,
+      "p999": 1120.0,
+      "max": 3312
+    },
+    "test_fanout": {
+      "zero_s1": 33407,
+      "p50": 10.0,
+      "p90": 158.0,
+      "p95": 318.0,
+      "p99": 653.0,
+      "p999": 1383.4569999999367,
+      "max": 4295
+    }
+  },
+  "integrity": {
+    "train_s2": {
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-01_CAP70/train_candidate_pairs_s2_cap70.tsv",
+      "rows": 46053622,
+      "bytes": 1187124612,
+      "sha256": "fa3263661523abbecf7c1b453bf335825b87a8f859ba1808fea12a7fe3274620",
+      "dups": 0,
+      "nulls": 0,
+      "self_matches": 0,
+      "invalid_s1": 0,
+      "invalid_tgt": 0,
+      "cross_country": 0,
+      "pass": true
+    },
+    "train_s3": {
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-01_CAP70/train_candidate_pairs_s3_cap70.tsv",
+      "rows": 54418451,
+      "bytes": 1402779722,
+      "sha256": "98173f5bb09e2dafacdb6948777f2410f2a53a1e6be8544d69e5e60d1aafa8a9",
+      "dups": 0,
+      "nulls": 0,
+      "self_matches": 0,
+      "invalid_s1": 0,
+      "invalid_tgt": 0,
+      "cross_country": 0,
+      "pass": true
+    },
+    "test_s2": {
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-01_CAP70/test_candidate_pairs_s2_cap70.tsv",
+      "rows": 48148873,
+      "bytes": 1241233148,
+      "sha256": "8849329d7f57f51bfbedfc4473f5e0100d792e2b6933984a854c64de10d09381",
+      "dups": 0,
+      "nulls": 0,
+      "self_matches": 0,
+      "invalid_s1": 0,
+      "invalid_tgt": 0,
+      "cross_country": 0,
+      "pass": true
+    },
+    "test_s3": {
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-01_CAP70/test_candidate_pairs_s3_cap70.tsv",
+      "rows": 55658191,
+      "bytes": 1434790362,
+      "sha256": "ad56363916682f8711440e6eed0b57e6ffcda439da3c02d419876dc88f0db2c4",
+      "dups": 0,
+      "nulls": 0,
+      "self_matches": 0,
+      "invalid_s1": 0,
+      "invalid_tgt": 0,
+      "cross_country": 0,
+      "pass": true
+    }
+  },
+  "checks": {
+    "train_recall_gt_657623": true,
+    "train_p95_le_300": true,
+    "test_p95_le_300": false,
+    "candidate_integrity_zero_violations": true,
+    "overall_decision": "FAIL"
+  }
+}

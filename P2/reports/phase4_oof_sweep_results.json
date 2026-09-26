@@ -1,0 +1,19 @@
+{
+  "sweep_results": [
+    {"threshold": 0.1, "tp": 5466872, "fp": 456710, "fn": 45114, "tn": 8313860, "precision": 0.922899, "recall": 0.991815, "pairwise_f0.5": 0.935817, "macro_f0.5": 0.824318, "pred_positives": 5923582},
+    {"threshold": 0.2, "tp": 5439739, "fp": 304961, "fn": 72247, "tn": 8465609, "precision": 0.946914, "recall": 0.986893, "pairwise_f0.5": 0.954631, "macro_f0.5": 0.833719, "pred_positives": 5744700},
+    {"threshold": 0.3, "tp": 5413348, "fp": 228301, "fn": 98638, "tn": 8542269, "precision": 0.959533, "recall": 0.982105, "pairwise_f0.5": 0.963952, "macro_f0.5": 0.838145, "pred_positives": 5641649},
+    {"threshold": 0.4, "tp": 5387498, "fp": 180883, "fn": 124488, "tn": 8589687, "precision": 0.967516, "recall": 0.977415, "pairwise_f0.5": 0.969476, "macro_f0.5": 0.840382, "pred_positives": 5568381},
+    {"threshold": 0.5, "tp": 5356393, "fp": 143723, "fn": 155593, "tn": 8626847, "precision": 0.973869, "recall": 0.971772, "pairwise_f0.5": 0.973449, "macro_f0.5": 0.841605, "pred_positives": 5500116},
+    {"threshold": 0.6, "tp": 5318532, "fp": 111478, "fn": 193454, "tn": 8659092, "precision": 0.979470, "recall": 0.964903, "pairwise_f0.5": 0.976527, "macro_f0.5": 0.841781, "pred_positives": 5430010},
+    {"threshold": 0.7, "tp": 5257121, "fp": 78259, "fn": 254865, "tn": 8692311, "precision": 0.985332, "recall": 0.953762, "pairwise_f0.5": 0.978878, "macro_f0.5": 0.840502, "pred_positives": 5335380},
+    {"threshold": 0.8, "tp": 5168058, "fp": 49371, "fn": 343928, "tn": 8721199, "precision": 0.990537, "recall": 0.937604, "pairwise_f0.5": 0.979435, "macro_f0.5": 0.836630, "pred_positives": 5217429},
+    {"threshold": 0.9, "tp": 5039324, "fp": 27754, "fn": 472662, "tn": 8742816, "precision": 0.994523, "recall": 0.914248, "pairwise_f0.5": 0.977531, "macro_f0.5": 0.828438, "pred_positives": 5067078}
+  ],
+  "optimal_threshold": 0.6,
+  "experiments": {
+    "baseline_fold0": 0.853945,
+    "exp_mod_01_fold0": 0.853928,
+    "exp_mod_05_fold0": 0.853884
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "experiment": "EXP-RET-01",
+  "description": "Soft Name Retrieval (Legal/Corporate Suffix Stripping with len >= 5)",
+  "rule_sql": "country = country AND core_name = core_name (len >= 5)",
+  "v2_baseline_recall": 0.657623,
+  "combined_recall": 0.6902181291415113,
+  "recall_delta": 0.0325951291415113,
+  "total_candidates": 106414104,
+  "candidate_delta": 39081580,
+  "captured_pairs": 5272138,
+  "new_captured_pairs": 248970,
+  "missed_pairs": 2366227,
+  "zero_candidate_s1": 62626,
+  "zero_candidate_delta": -31417,
+  "fanout_p50": 7.0,
+  "fanout_p90": 130.0,
+  "fanout_p95": 269.0,
+  "fanout_p99": 585.0,
+  "fanout_p999": 920.0,
+  "fanout_max": 3306,
+  "fanout_constraint_p95_le_300": "PASS",
+  "status": "ACCEPTED",
+  "s2_metrics": {
+    "raw_candidates": 29737141,
+    "combined_candidates": 49138296,
+    "captured": 2564005,
+    "new_captured": 125430,
+    "gt_total": 3693619,
+    "recall": 0.6941714887214951,
+    "artifact": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-01/train_candidates_s2_exp_ret_01.tsv"
+  },
+  "s3_metrics": {
+    "raw_candidates": 32280681,
+    "combined_candidates": 57275808,
+    "captured": 2708133,
+    "new_captured": 123540,
+    "gt_total": 3944746,
+    "recall": 0.686516444911789,
+    "artifact": "/Users/krishnagera/Amazon-ML-Challenge-2026/P1/experiments/phase3/EXP-RET-01/train_candidates_s3_exp_ret_01.tsv"
+  },
+  "total_runtime_seconds": 97.5,
+  "timestamp": "2026-09-26T15:01:22.997118+00:00"
+}
