@@ -1,0 +1,103 @@
+{
+  "experiment": "E03 \u2014 NESTED THRESHOLD DECISION EXPERIMENT",
+  "status": "COMPLETED",
+  "git_sha": "5cfbaa1db957485f7bb33a4e7b9a8d732256d8a7",
+  "e02_baseline": {
+    "macro_f05": 0.718765173,
+    "fixed_threshold": 0.5,
+    "oof_rows": 54592725,
+    "s2_rows": 24594064,
+    "s3_rows": 29998661,
+    "covered_s1_entities": 2206821
+  },
+  "protocol": {
+    "nested_folds": 5,
+    "folds_path": "P3/reports/folds_v1_manifest.tsv",
+    "folds_sha256": "9dcec5d83a477d224067e71b93abc21af8befa26f9c399568121fa83ba8801a3",
+    "scorer_version": "scorer_v1",
+    "scoring_unit": "Source-1 entity",
+    "threshold_grid": {
+      "start": 0.5,
+      "end": 0.995,
+      "step": 0.005,
+      "count": 100
+    },
+    "tie_break_rule": "lower_threshold",
+    "selection_objective": "Macro F0.5 on the remaining 4 development folds"
+  },
+  "nested_results": {
+    "fold0": {
+      "selected_threshold": 0.9,
+      "dev_macro_f05": 0.745034,
+      "held_out_macro_f05": 0.744291149,
+      "e02_baseline_f05": 0.718062419,
+      "delta_f05": 0.02622873
+    },
+    "fold1": {
+      "selected_threshold": 0.9,
+      "dev_macro_f05": 0.744994,
+      "held_out_macro_f05": 0.744451917,
+      "e02_baseline_f05": 0.718144095,
+      "delta_f05": 0.026307822
+    },
+    "fold2": {
+      "selected_threshold": 0.9,
+      "dev_macro_f05": 0.744784,
+      "held_out_macro_f05": 0.745293046,
+      "e02_baseline_f05": 0.71916871,
+      "delta_f05": 0.026124336
+    },
+    "fold3": {
+      "selected_threshold": 0.9,
+      "dev_macro_f05": 0.744707,
+      "held_out_macro_f05": 0.745600069,
+      "e02_baseline_f05": 0.719574831,
+      "delta_f05": 0.026025238
+    },
+    "fold4": {
+      "selected_threshold": 0.9,
+      "dev_macro_f05": 0.744909,
+      "held_out_macro_f05": 0.744792357,
+      "e02_baseline_f05": 0.718875824,
+      "delta_f05": 0.025916533
+    },
+    "overall_nested_macro_f05": 0.744885727,
+    "fold_mean": 0.744885708,
+    "fold_std": 0.000553766,
+    "overall_improvement_over_baseline": 0.026120559,
+    "percentage_improvement": 3.634,
+    "diagnostic_score_at_090": 0.744885727,
+    "difference_nested_vs_090": 0.0
+  },
+  "artifacts": {
+    "predictions": {
+      "path": "P2/reports/E03_OOF_PREDICTIONS.tsv",
+      "sha256": "ca332b9d07c75704189941458a87cd670c88ad4e7cdfd14cd1dcf8e49d1311a3",
+      "bytes": 2647508460,
+      "row_count": 54592725,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "target",
+        "fold",
+        "oof_score",
+        "selected_threshold",
+        "selected_prediction"
+      ]
+    },
+    "nested_results_tsv": "P2/reports/E03_NESTED_THRESHOLD_RESULTS.tsv",
+    "threshold_curve_tsv": "P2/reports/E03_THRESHOLD_CURVE.tsv",
+    "report_md": "P2/reports/E03_NESTED_THRESHOLD_REPORT.md"
+  },
+  "integrity_checks": {
+    "oof_rows": 54592725,
+    "missing_pairs": 0,
+    "duplicate_pairs": 0,
+    "all_scores_finite": true,
+    "all_thresholds_valid": true,
+    "total_predicted_matches": 4497417,
+    "total_tp": 4327648,
+    "total_fp": 169769,
+    "total_fn": 3310717
+  }
+}
