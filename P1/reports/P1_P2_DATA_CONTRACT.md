@@ -30,27 +30,27 @@ This contract specifies the formal schema, physical data formats, partitioning, 
 | Field Name | Type | Constraint | Description |
 |---|---|---|---|
 | `entity_id` | `VARCHAR` | NOT NULL, PRIMARY KEY | Unique entity identifier (e.g. `S1-123`, `S2-456`) |
-| `business_name_raw` | `VARCHAR` | NOT NULL | Raw source business name |
-| `business_address_raw` | `VARCHAR` | NOT NULL | Raw source business address |
-| `country_raw` | `VARCHAR` | NOT NULL | Raw source country code |
-| `business_name_normalized` | `VARCHAR` | NOT NULL | Standardized business name |
-| `business_address_normalized`| `VARCHAR` | NOT NULL | Standardized business address |
-| `country_normalized` | `VARCHAR` | NOT NULL | Standardized country code |
-| `name_clean` | `VARCHAR` | NOT NULL | Lowercased alphanumeric text |
-| `address_clean` | `VARCHAR` | NOT NULL | Lowercased alphanumeric text |
-| `name_tokens` | `VARCHAR[]` | NOT NULL | Tokenized business name array |
-| `address_tokens` | `VARCHAR[]` | NOT NULL | Tokenized business address array |
-| `name_prefix_1`..`4` | `VARCHAR` | NOT NULL | Length 1, 2, 3, 4 character prefixes |
-| `first_token` | `VARCHAR` | NOT NULL | Initial whitespace-delimited word |
-| `root_token` | `VARCHAR` | NOT NULL | Common commercial prefix stripped token |
-| `house_number` | `VARCHAR` | NOT NULL | Canonical house number string |
-| `house_number_norm` | `VARCHAR` | NOT NULL | Zero-stripped house number |
-| `postal_code` | `VARCHAR` | NOT NULL | 5-to-6 digit postal code |
+| `business_name_raw` | `VARCHAR` | MAY BE EMPTY | Raw source business name |
+| `business_address_raw` | `VARCHAR` | MAY BE EMPTY | Raw source business address |
+| `country_raw` | `VARCHAR` | MAY BE EMPTY | Raw source country code |
+| `business_name_normalized` | `VARCHAR` | MAY BE EMPTY | Standardized business name |
+| `business_address_normalized`| `VARCHAR` | MAY BE EMPTY | Standardized business address |
+| `country_normalized` | `VARCHAR` | MAY BE EMPTY | Standardized country code |
+| `name_clean` | `VARCHAR` | MAY BE EMPTY | Lowercased alphanumeric text |
+| `address_clean` | `VARCHAR` | MAY BE EMPTY | Lowercased alphanumeric text |
+| `name_tokens` | `VARCHAR[]` | MAY BE EMPTY ARRAY | Tokenized business name array |
+| `address_tokens` | `VARCHAR[]` | MAY BE EMPTY ARRAY | Tokenized business address array |
+| `name_prefix_1`..`4` | `VARCHAR` | MAY BE EMPTY | Length 1, 2, 3, 4 character prefixes |
+| `first_token` | `VARCHAR` | MAY BE EMPTY | Initial whitespace-delimited word |
+| `root_token` | `VARCHAR` | MAY BE EMPTY | Common commercial prefix stripped token |
+| `house_number` | `VARCHAR` | MAY BE NULL/EMPTY | Canonical house number string (empty when non-extractable) |
+| `house_number_norm` | `VARCHAR` | MAY BE NULL/EMPTY | Zero-stripped house number (empty when non-extractable) |
+| `postal_code` | `VARCHAR` | MAY BE NULL/EMPTY | 5-to-6 digit postal code (empty when non-extractable) |
 
 ### Invariants
 1. **Zero Row Loss**: Canonical row count must match raw source row count exactly.
-2. **Deterministic Ordering**: All files are sorted by `entity_id ASC`.
-3. **No Nulls**: Missing values are stored as empty strings `""` or empty arrays `[]`, never SQL `NULL`.
+2. **Deterministic Ordering**: All files are sorted by `entity_id ASC` ensuring stable, repeatable row sequencing. (Note: Deterministic row ordering ensures repeatable traversal, but does not constitute proof of bitwise binary reproducibility across different Parquet writer implementations, page sizes, or platform architectures).
+3. **Legitimate NULL / Empty Values**: While primary key `entity_id` is strictly non-null, derived fields (such as `house_number`, `postal_code`, `root_token`) legitimately evaluate to empty strings `""` or `NULL` when an entity's address or name does not contain the corresponding feature. P2 consumers must explicitly handle empty/NULL inputs for derived fields.
 
 ---
 

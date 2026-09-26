@@ -69,10 +69,10 @@ Validation results are documented in `P1/reports/PHASE1_ENTITY_DATASET_VALIDATIO
 
 ---
 
-## 6. Determinism
+## 6. Determinism & Ordering
 
 All canonical Parquet datasets were written with strict `ORDER BY raw.entity_id ASC`.  
-Validation confirmed that for 100% of rows, `entity_id` is monotonically increasing (`is_sorted = True`), guaranteeing bitwise reproducibility of all downstream blocking and feature operations.
+Validation confirmed that for 100% of rows, `entity_id` is monotonically increasing (`is_sorted = True`), ensuring stable and repeatable row iteration for downstream tasks. Note: While monotonic ordering guarantees consistent query sequencing, deterministic ordering alone does not constitute formal proof of bitwise binary reproducibility across different Parquet writer implementations, dictionary encodings, compression levels, or platform architectures.
 
 ---
 
@@ -188,9 +188,9 @@ Cataloged in `P1/reports/V2_MISSED_PAIR_ERROR_BUCKETS.tsv`:
 
 ## 15. Evidence-Based Findings
 
-1. **Strict House Number Coupling is the Primary Blocker**: 44.5% of misses (1.16M pairs) are caused because blocking rules rigidly demand an exact house number match, yet addresses contain missing, descriptive, or divergent house digits.
-2. **Name Variations are Often Minor Lexically**: Over 619,000 missed pairs have $JW \ge 0.85$ names; they were missed simply because candidate rules required an accompanying house number match.
-3. **Indic / Devanagari Scripts Represent a Clear 10% Floor**: Nearly 280,000 missed pairs in India cannot be solved by standard Latin string heuristics.
+1. **House-Number Failure is the Largest Identified Mechanism**: Address house-number divergence and absence constitute the single largest observed failure category (~1.16M pairs affected across missing and divergent house digits). However, this should be understood as a prominent compounding mechanism rather than an isolated, independent causal 44.5% partition, as many of these instances interact with secondary name mutations and unstandardized address tokens.
+2. **Name Variations are Often Minor Lexically**: Over 619,000 missed pairs have $JW \ge 0.85$ names; they were missed primarily because candidate rules rigidly required an accompanying exact house number match.
+3. **Indic / Devanagari Scripts Represent a Substantial Non-Latin Cohort**: Nearly 280,000 missed pairs in India feature non-Latin Devanagari characters and cannot be resolved by standard ASCII/Latin string heuristics alone.
 4. **Country Partitioning is 100% Accurate**: Zero ground truth pairs cross country borders. All retrieval channels must maintain `country_s1 = country_target`.
 
 ---
@@ -207,7 +207,7 @@ Detailed in `P1/reports/PHASE3_RETRIEVAL_EXPERIMENT_PLAN.md`:
 
 ## 17. P1 → P2 Data Contract
 
-The formal data interface contract is documented in `P1/reports/P1_P2_DATA_CONTRACT.md`. It defines exact Parquet schema requirements, deterministic ordering (`entity_id ASC`), zero-null guarantees, three-column candidate structures, and cryptographic verification protocols.
+The formal data interface contract is documented in `P1/reports/P1_P2_DATA_CONTRACT.md`. It defines exact Parquet schema requirements, deterministic ordering (`entity_id ASC`), strictly populated primary keys with legitimately empty/NULL handling for non-derivable fields, three-column candidate structures, and cryptographic verification protocols.
 
 ---
 

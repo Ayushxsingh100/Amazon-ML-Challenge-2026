@@ -12,7 +12,9 @@
 1. **Lossless Preservation**: Raw source columns (`business_name_raw`, `business_address_raw`, `country_raw`) are preserved exactly as provided in the raw competition TSVs without truncation, stripping, or mutation.
 2. **Dual Representation**: Standardized text from normalized TSVs is kept side-by-side with raw strings to enable feature extraction and candidate retrieval across multiple representations.
 3. **Deterministic Derived Keys**: High-precision blocking keys (prefixes, house numbers, postal codes, root tokens) are computed deterministically using standard SQL expressions.
-4. **100% Entity Retention**: Zero rows are dropped. If an entity has empty or missing attributes, empty strings (`""`) are retained and preserved.
+4. **Legitimate NULL / Empty Values**: Derived fields (such as `house_number`, `postal_code`, `root_token`) may legitimately evaluate to empty strings `""` or `NULL` when the underlying feature is not extractable from the source text. Downstream consumers must handle these non-derivable values appropriately.
+5. **100% Entity Retention**: Zero rows are dropped. Even if an entity has empty or missing attributes, the entity is preserved with its unique `entity_id`.
+6. **Deterministic Ordering**: All files are sorted by `entity_id ASC` for stable query and partition iteration. Note that deterministic row ordering guarantees repeatable row traversal, but does not imply or prove bitwise identical binary files across different writer implementations, compression page sizes, or platform architectures.
 
 ---
 

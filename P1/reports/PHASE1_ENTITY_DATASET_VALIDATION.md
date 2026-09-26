@@ -37,5 +37,6 @@
 1. **Zero Row Loss**: All 24,228,873 entity records across train and test partitions were captured with 100.0% retention.
 2. **Zero ID Corruption**: No ID mutations, null IDs, or truncated identifiers were observed.
 3. **Zero ID Duplication**: All unique entity IDs match the source count exactly.
-4. **Deterministic Storage**: Every file is ordered by `entity_id ASC`, ensuring repeatable downstream candidate generation and feature extraction.
+4. **Deterministic Storage**: Every file is ordered by `entity_id ASC`, ensuring repeatable row traversal for downstream candidate generation and feature extraction (note: deterministic row ordering provides stable traversal, but does not constitute proof of bitwise binary reproducibility across diverse writer libraries).
 5. **Dual Representation**: Raw and normalized strings are preserved side-by-side, guaranteeing full provenance for future retrieval models.
+6. **Legitimate NULL / Empty Derived Values**: Non-extractable fields (e.g. absent house numbers or missing postal codes) evaluate legitimately to empty strings/NULLs, while primary key `entity_id` is strictly non-null.
