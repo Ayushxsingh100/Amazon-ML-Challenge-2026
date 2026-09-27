@@ -30,3 +30,5 @@ P2/reports/E06_V2_OOF_FULL_CANONICAL.tsv
 
 /.git/index.lock
 P2/predictions/phase6/
+P2/predictions/phase7/
+P1/reports/phase7_missed_gt_analysis.tsv
