@@ -1,0 +1,464 @@
+{
+  "datasets": {
+    "train_source1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/train/train_source1.tsv",
+      "file_size_bytes": 210069713,
+      "sha256": "591af0e1dfeb65cab71ea6ee8cb69df00f92d6ba6fa79e05746c938775d14973",
+      "rows": 2206821,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 2206821,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 0,
+      "empty_country_count": 0
+    },
+    "train_source2": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/train/train_source2.tsv",
+      "file_size_bytes": 489301488,
+      "sha256": "6336c1a055eec79cf8a6d99fdc8d32a2e4d9dc2662e00963cb35d66b89ed09ed",
+      "rows": 5034616,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 5034616,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 168967,
+      "empty_country_count": 0
+    },
+    "train_source3": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/train/train_source3.tsv",
+      "file_size_bytes": 503705637,
+      "sha256": "67da22f5151898ff3006febd836c1a159e97ae95efa7257a5aff4fda685e58e9",
+      "rows": 5285603,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 5285603,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 175916,
+      "empty_country_count": 0
+    },
+    "test_source1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/test/test_source1.tsv",
+      "file_size_bytes": 175022086,
+      "sha256": "3d4a32c54c2ca9c53fd7c2be105bf26f708f94c4d2f88eb370972a195665c2f5",
+      "rows": 1732544,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 1732544,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 0,
+      "empty_country_count": 0
+    },
+    "test_source2": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/test/test_source2.tsv",
+      "file_size_bytes": 509456422,
+      "sha256": "79d906c7497af2ace70aa277f6e334a652094909de99bd6c57b53420b6a7b2dd",
+      "rows": 4887273,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 4887273,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 129408,
+      "empty_country_count": 0
+    },
+    "test_source3": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/test/test_source3.tsv",
+      "file_size_bytes": 506002772,
+      "sha256": "850942b11d2a4343486ed0834e28bce9f3b385f3fd497fd60ccf4ea3b8bda035",
+      "rows": 5082316,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 5082316,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 136098,
+      "empty_country_count": 0
+    },
+    "train_ground_truth": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/data/train/train_ground_truth.tsv",
+      "file_size_bytes": 127015583,
+      "sha256": "70bc1d8a16c667e0155c2105d0ab2ebe41d7e7a85d8a529e3ca81c6c3a5af037",
+      "rows": 2206821,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_ids"
+      ],
+      "unique_id_count": 2206821,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_matches": 123247
+    },
+    "train_source1_normalized": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/normalized/train_source1_normalized.tsv",
+      "file_size_bytes": 210044643,
+      "sha256": "05d53a5d74bd3505c9fd559fb8c18c42e2256107571d62c6d22c3beb4245e1b9",
+      "rows": 2206821,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 2206821,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 0,
+      "empty_country_count": 0
+    },
+    "train_source2_normalized": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/normalized/train_source2_normalized.tsv",
+      "file_size_bytes": 473461005,
+      "sha256": "a637b672ee43b7bd37411421e092b36dda40328a5d81c55059c540663e82dbd6",
+      "rows": 5034616,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 5034616,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 6,
+      "empty_address_count": 168967,
+      "empty_country_count": 0
+    },
+    "train_source3_normalized": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/normalized/train_source3_normalized.tsv",
+      "file_size_bytes": 492985040,
+      "sha256": "13fbd7561fa1422fdb7a5f3c175843c9ec9d2428fb838fc15d7cd9c959470287",
+      "rows": 5285603,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 5285603,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 18,
+      "empty_address_count": 175916,
+      "empty_country_count": 0
+    },
+    "test_source1_normalized": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/normalized/test_source1_normalized.tsv",
+      "file_size_bytes": 174998099,
+      "sha256": "f6ce8790347d7db75fcac8405d9e7817b54fe653a97865b40163f919425049f4",
+      "rows": 1732544,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 1732544,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 0,
+      "empty_address_count": 0,
+      "empty_country_count": 0
+    },
+    "test_source2_normalized": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/normalized/test_source2_normalized.tsv",
+      "file_size_bytes": 491148398,
+      "sha256": "5bc01f5e54f63137c122e11bebf5971a7d30e71f0ada7b51683a34a6723b7a96",
+      "rows": 4887273,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 4887273,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 49,
+      "empty_address_count": 129408,
+      "empty_country_count": 0
+    },
+    "test_source3_normalized": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/normalized/test_source3_normalized.tsv",
+      "file_size_bytes": 493709014,
+      "sha256": "58ef93ced22f8badcc9e89425679378158206e70f382aa3961c66d9f46ed58f4",
+      "rows": 5082316,
+      "columns": 4,
+      "column_names": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "unique_id_count": 5082316,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_name_count": 61,
+      "empty_address_count": 136098,
+      "empty_country_count": 0
+    },
+    "train_ground_truth_reconstructed": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/train_ground_truth_reconstructed.tsv",
+      "file_size_bytes": 127015583,
+      "sha256": "70bc1d8a16c667e0155c2105d0ab2ebe41d7e7a85d8a529e3ca81c6c3a5af037",
+      "rows": 2206821,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_ids"
+      ],
+      "unique_id_count": 2206821,
+      "duplicate_id_count": 0,
+      "null_id_count": 0,
+      "empty_id_count": 0,
+      "empty_matches": 123247
+    }
+  },
+  "ground_truth_exploded": {
+    "total_exploded_pairs": 7638365,
+    "s2_pairs": 0,
+    "s3_pairs": 0,
+    "other_pairs": 7638365,
+    "s1_with_s2": 0,
+    "s1_with_s3": 0
+  },
+  "candidates": {
+    "train_candidate_pairs_s2_v1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/train_candidate_pairs_s2.tsv",
+      "file_size_bytes": 683144227,
+      "sha256": "1a1f671d500bea88095cb69f5d32dabe6644357ff91432526305b10856f210be",
+      "rows": 24594064,
+      "columns": 3,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "unique_s1": 1859868,
+      "unique_target": 2798463,
+      "positives": 2214137,
+      "negatives": 22379927
+    },
+    "train_candidate_pairs_s3_v1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/train_candidate_pairs_s3.tsv",
+      "file_size_bytes": 833303719,
+      "sha256": "b34f05adaefd6990495ebf2581f9d1b0582a15bb71a87d05a54c9caf6c440255",
+      "rows": 29998661,
+      "columns": 3,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "unique_s1": 1881377,
+      "unique_target": 3016380,
+      "positives": 2346442,
+      "negatives": 27652219
+    },
+    "test_candidate_pairs_s2_v1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/test_candidate_pairs_s2.tsv",
+      "file_size_bytes": 779362145,
+      "sha256": "7c79411c7e917cad04817adb921a721bda9a4927a32c01504599a9949ede8366",
+      "rows": 30232352,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ],
+      "unique_s1": 1478061,
+      "unique_target": 2506067,
+      "positives": null,
+      "negatives": null
+    },
+    "test_candidate_pairs_s3_v1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/test_candidate_pairs_s3.tsv",
+      "file_size_bytes": 923479763,
+      "sha256": "620ff6e2654bcd3eeae0e81b5670734b290fbc5a76d668891ad1659a7d606531",
+      "rows": 35822910,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ],
+      "unique_s1": 1493071,
+      "unique_target": 2725472,
+      "positives": null,
+      "negatives": null
+    },
+    "train_candidate_pairs_s2_v2": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/train_candidate_pairs_s2_v2.tsv",
+      "file_size_bytes": 843272201,
+      "sha256": "386c0a0c0dacda2df90d26778a893c760b686c1c4e84bc0ef033e7ce84c28d22",
+      "rows": 30359040,
+      "columns": 3,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "unique_s1": 1929373,
+      "unique_target": 3045029,
+      "positives": 2438575,
+      "negatives": 27920465
+    },
+    "train_candidate_pairs_s3_v2": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/train_candidate_pairs_s3_v2.tsv",
+      "file_size_bytes": 1027044644,
+      "sha256": "6d6cc5171beb4f445a4016f35a27e488e543cdeaa66bb5a26b342f87302c8404",
+      "rows": 36973484,
+      "columns": 3,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "unique_s1": 1944749,
+      "unique_target": 3277458,
+      "positives": 2584593,
+      "negatives": 34388891
+    },
+    "test_candidate_pairs_s2_v2": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/test_candidate_pairs_s2_v2.tsv",
+      "file_size_bytes": 900172941,
+      "sha256": "149e168a56025a860c7e917f1ba70f990cfaefd0660175d8d8050c657fbe9c82",
+      "rows": 34919169,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ],
+      "unique_s1": 1526337,
+      "unique_target": 2712234,
+      "positives": null,
+      "negatives": null
+    },
+    "test_candidate_pairs_s3_v2": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/data/candidates/test_candidate_pairs_s3_v2.tsv",
+      "file_size_bytes": 1075341054,
+      "sha256": "ec2dd1c0ca63d71d242b84854b22bace3fec0c7d611a193fc224a6b6bf971576",
+      "rows": 41714627,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ],
+      "unique_s1": 1537152,
+      "unique_target": 2946450,
+      "positives": null,
+      "negatives": null
+    },
+    "test_candidate_pairs_s2_p1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/test_candidate_pairs_s2.tsv",
+      "file_size_bytes": 671446057,
+      "sha256": "8aff61a3b98848ed3af607352f4def7e87cc2fb0abc927a9b6feb0d888586528",
+      "rows": 26046195,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ],
+      "unique_s1": 1331914,
+      "unique_target": 2298136,
+      "positives": null,
+      "negatives": null
+    },
+    "test_candidate_pairs_s3_p1": {
+      "exists": true,
+      "path": "/Users/krishnagera/Amazon-ML-Challenge-2026/outputs/person1_step1/test_candidate_pairs_s3.tsv",
+      "file_size_bytes": 793434340,
+      "sha256": "645862ffab6e62ca0cf26d77d53b87148dc74be14e026b5918116c64bf3d829d",
+      "rows": 30777878,
+      "columns": 2,
+      "column_names": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ],
+      "unique_s1": 1350577,
+      "unique_target": 2492891,
+      "positives": null,
+      "negatives": null
+    }
+  }
+}

@@ -1,0 +1,5 @@
+split_source	candidate_version	feature_path	row_count	generator_script	generation_timestamp
+TRAIN S2	cands_BCD_v1	C:\NEW AMAZON\Amazon-ML-Challenge-2026\P2\data\features\cands_BCD_v1_features_train_s2.tsv	24594064	P2/scripts/cands_BCD_v1_tasks.py	2026-09-25T17:23:23.689880+00:00
+TRAIN S3	cands_BCD_v1	C:\NEW AMAZON\Amazon-ML-Challenge-2026\P2\data\features\cands_BCD_v1_features_train_s3.tsv	29998661	P2/scripts/cands_BCD_v1_tasks.py	2026-09-25T17:25:38.472173+00:00
+TEST S2	cands_BCD_v1	C:\NEW AMAZON\Amazon-ML-Challenge-2026\P2\data\features\cands_BCD_v1_features_test_s2.tsv	30232352	P2/scripts/cands_BCD_v1_tasks.py	2026-09-25T17:27:55.140097+00:00
+TEST S3	cands_BCD_v1	C:\NEW AMAZON\Amazon-ML-Challenge-2026\P2\data\features\cands_BCD_v1_features_test_s3.tsv	35822910	P2/scripts/cands_BCD_v1_tasks.py	2026-09-25T17:31:06.183547+00:00

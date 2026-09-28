@@ -1,0 +1,22 @@
+{
+  "s2": {
+    "total_cands": 47417290,
+    "v2_cap": 2438575,
+    "e1_new": 120520,
+    "e2_new": 38910,
+    "e3_new": 61248,
+    "e4_new": 27812,
+    "total_cap": 2687065,
+    "sum_check": true
+  },
+  "s3": {
+    "total_cands": 55599705,
+    "v2_cap": 2584593,
+    "e1_new": 119277,
+    "e2_new": 47311,
+    "e3_new": 54262,
+    "e4_new": 39421,
+    "total_cap": 2844864,
+    "sum_check": true
+  }
+}

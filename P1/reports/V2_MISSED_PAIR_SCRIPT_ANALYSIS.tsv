@@ -1,0 +1,3 @@
+target_source	total_missed	ascii_only	pct_ascii	devanagari	pct_devanagari	other_non_ascii	pct_other_non_ascii	cross_script_candidates	pct_cross_script
+source2	1255044	868527	69.20%	167174	13.32%	219343	17.48%	386517	30.80%
+source3	1360153	1053254	77.44%	112579	8.28%	194320	14.29%	306899	22.56%

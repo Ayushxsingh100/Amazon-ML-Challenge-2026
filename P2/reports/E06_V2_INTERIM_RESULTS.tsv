@@ -1,0 +1,16 @@
+metric	fold	threshold	value	pairs_above	status	notes
+candidate_oracle	overall	N/A	0.827200935	N/A	COMPLETE	V2 candidate universe theoretical ceiling
+candidate_oracle	0	N/A	0.827379000	N/A	COMPLETE	Fold 0 candidate oracle
+candidate_oracle	1	N/A	0.826718000	N/A	COMPLETE	Fold 1 candidate oracle
+candidate_oracle	2	N/A	0.827481000	N/A	COMPLETE	Fold 2 candidate oracle
+candidate_oracle	3	N/A	0.827720000	N/A	COMPLETE	Fold 3 candidate oracle
+candidate_oracle	4	N/A	0.826708000	N/A	COMPLETE	Fold 4 candidate oracle
+macro_f0.5	overall	0.500	0.747084844	5883557	COMPLETE	Primary controlled comparison baseline
+macro_f0.5	0	0.500	0.747122071	N/A	COMPLETE	Fold 0 @ T=0.50
+macro_f0.5	1	0.500	0.746511966	N/A	COMPLETE	Fold 1 @ T=0.50
+macro_f0.5	2	0.500	0.747279404	N/A	COMPLETE	Fold 2 @ T=0.50
+macro_f0.5	3	0.500	0.747798982	N/A	COMPLETE	Fold 3 @ T=0.50
+macro_f0.5	4	0.500	0.746713865	N/A	COMPLETE	Fold 4 @ T=0.50
+macro_f0.5	overall	0.600	0.755926000	5659564	COMPLETE	Diagnostic threshold evaluation
+macro_f0.5	overall	0.700	0.767933000	5384522	COMPLETE	Diagnostic threshold evaluation
+threshold_sweep	overall	0.500-0.995	N/A	N/A	PARTIAL_STOPPED	Full 0.500–0.995 sweep was intentionally stopped; reported threshold results are the completed evaluations available before stop.

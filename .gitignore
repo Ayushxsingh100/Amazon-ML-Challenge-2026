@@ -1,0 +1,101 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# macOS / Windows OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Data & Datasets
+data/
+*/data/
+*.parquet
+*.feather
+*.arrow
+*.duckdb
+*.sqlite
+*.db
+
+# Intermediate & Generated artifacts
+outputs/
+output/
+ready_files/
+scratch/
+.tmp/
+temp/
+tmp/
+*.tmp
+
+# Subfolder generated data & predictions
+P1/data/
+P1/experiments/
+P2/data/
+P2/predictions/
+
+# Large binaries & archives
+*.pkl
+*.pickle
+*.joblib
+*.bin
+*.tar.gz
+*.zip
+*.7z
+
+# Logs & audit dumps
+*.log
+cleanup_audit.txt
+recovery_audit.txt
+verify_cleanup.txt
+status

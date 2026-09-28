@@ -1,0 +1,45 @@
+{
+  "git_sha": "60a8658579cfaca0e9e22ba67660a4dc65dc1832",
+  "git_status": "?? P2/reports/E02_OOF_MANIFEST.tsv\n?? P2/reports/E02_THRESHOLD_SWEEP.tsv\n?? P2/scripts/e02_train_lgb.py\n?? validation/metrics.py",
+  "bcd_implementation_sha": "76316c7",
+  "folds_path": "C:\\NEW AMAZON\\Amazon-ML-Challenge-2026\\P3\\reports\\folds_v1_manifest.tsv",
+  "folds_sha": "9dcec5d83a477d224067e71b93abc21af8befa26f9c399568121fa83ba8801a3",
+  "scorer_version": "scorer_v1",
+  "lightgbm_version": "4.7.0",
+  "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "parameters": {
+    "objective": "binary",
+    "boosting_type": "gbdt",
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "max_depth": -1,
+    "feature_fraction": 1.0,
+    "bagging_fraction": 1.0,
+    "min_data_in_leaf": 20,
+    "lambda_l1": 0.0,
+    "lambda_l2": 0.0,
+    "seed": 2026,
+    "metric": "None",
+    "verbose": -1,
+    "num_threads": 4
+  },
+  "num_boost_round": 500,
+  "sampling_rate": 0.1,
+  "random_seeds": [
+    2026
+  ],
+  "runtime_seconds": 1994.2934322357178,
+  "memory_behavior": "TRAINING: 10% negative downsampling. OOF PREDICTION: Full 54.5M canonical coverage via chunking",
+  "oof_row_count": 54592725,
+  "integrity_checks": {
+    "duplicate_predictions": 0,
+    "missing_predictions": 0,
+    "all_scores_finite": true,
+    "s2_rows": 24594064,
+    "s3_rows": 29998661
+  },
+  "fixed_threshold": 0.5,
+  "macro_f05": 0.7694519450829973,
+  "candidate_floor": 0.05584820880352326,
+  "candidate_oracle": 0.7845225911416449
+}

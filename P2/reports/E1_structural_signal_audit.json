@@ -1,0 +1,77 @@
+{
+  "raw_exact_stats": [
+    {
+      "population": "Missed True Pairs",
+      "sample_size": 2126379,
+      "raw_name_exact_pct": 0.0,
+      "raw_addr_exact_pct": 0.0,
+      "norm_name_exact_pct": 0.0,
+      "norm_addr_exact_pct": 0.0
+    },
+    {
+      "population": "Captured True Pairs",
+      "sample_size": 100000,
+      "raw_name_exact_pct": 0.06397,
+      "raw_addr_exact_pct": 0.03138,
+      "norm_name_exact_pct": 0.2341,
+      "norm_addr_exact_pct": 0.10354
+    }
+  ],
+  "id_structure_stats": [
+    {
+      "population": "True Pairs",
+      "exact_numeric_id_rate": 0.0,
+      "small_offset_rate": 1.0,
+      "mod10_equal_rate": 0.0,
+      "avg_id_diff": 1.51599
+    },
+    {
+      "population": "Random Pairs",
+      "exact_numeric_id_rate": 0.0,
+      "small_offset_rate": 1.0,
+      "mod10_equal_rate": 0.0,
+      "avg_id_diff": 1.50907
+    }
+  ],
+  "row_position_stats": {
+    "avg_row_pos_distance": 1078388.63424,
+    "median_row_pos_distance": 1081474.5
+  },
+  "sibling_recovery_stats": {
+    "missed_pairs_with_sibling": 2476597,
+    "s1_entities_with_sibling": 1030881,
+    "shared_clean_name_pct": 0.01577083393059105,
+    "shared_clean_addr_pct": 0.003917472241143795,
+    "shared_pin_pct": 0.003798760961109135,
+    "recoverable_by_sibling_pct": 0.019688306171734844
+  },
+  "test_volume_checks": {
+    "train_s1_entities": 2206821,
+    "test_s1_entities": 1732544,
+    "suffix_stripped_name_cap5": {
+      "train_added": 2439793,
+      "train_cands_per_s1": 1.1055690515905006,
+      "test_added": 2002330,
+      "test_cands_per_s1": 1.1557166802112961,
+      "test_to_train_ratio": 1.0453591103591873
+    },
+    "pin_house_number": {
+      "train_added": 6522077,
+      "train_cands_per_s1": 2.9554173174897285,
+      "test_added": 2073645,
+      "test_cands_per_s1": 1.1968786939898786,
+      "test_to_train_ratio": 0.4049778983519265
+    }
+  },
+  "india_root_causes": {
+    "india_missed_pairs": 1187831,
+    "india_missed_entities": 596845,
+    "indic_script_presence_pct": 0.488269795955822,
+    "token_inversion_pct": 0.19924467369516372,
+    "spelling_variant_pct": 0.08708983011893107,
+    "unstructured_landmark_no_pin_pct": 0.6676985194021708,
+    "shared_pin_present_pct": 0.0006162492812529729,
+    "pin_missing_pct": 0.9992978799172609,
+    "suffix_variation_pct": 0.09902334591368638
+  }
+}

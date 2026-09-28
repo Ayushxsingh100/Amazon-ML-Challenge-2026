@@ -1,0 +1,15 @@
+{
+  "total_candidates": 126490523,
+  "captured_true_pairs": 5540429,
+  "missed_true_pairs": 2097936,
+  "combined_recall": 0.7253422689279708,
+  "zero_candidate_s1": 42613,
+  "fanout": {
+    "p50": 10.0,
+    "p90": 149.0,
+    "p95": 324.0,
+    "p99": 621.0,
+    "p999": 1236.0,
+    "max": 3312
+  }
+}

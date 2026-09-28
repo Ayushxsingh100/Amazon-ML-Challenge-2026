@@ -1,0 +1,14 @@
+component	type	path	classification	evidence	notes
+Raw TSV Reconstruction	Data Pipeline	reconstruct_data.sh	ACTIVE	Successfully rebuilds all raw TSVs from .part_* chunks with SHA256 integrity.	Verified identical row count and GT SHA256 match.
+V1 Candidate Generation	Candidate Pipeline	P2/scripts/cands_BCD_v1_tasks.py	BASELINE	Generated 54,592,725 train candidates (24.6M S2 + 30.0M S3) used by E02 LightGBM model.	Achieves 59.94% S2 recall and 59.48% S3 recall. Rules A, B, C, D.
+V2 Candidate Generation	Candidate Pipeline	P2/scripts/cands_BCD_v2_tasks.py	EXPERIMENTAL	Generated 67,332,524 train candidates (30.4M S2 + 37.0M S3) and test candidates.	Achieves 66.02% S2 recall and 65.52% S3 recall (+462,589 positives). Currently UNUSED by E02.
+E02 LightGBM CV Training	Model Pipeline	P2/scripts/e02_train_lgb.py	BASELINE	Produces Macro F0.5 = 0.7695 (OOF across 5 folds at T=0.5).	Trained on V1 candidates with 10% negative downsampling. All 5 fold OOF files exist in P2/reports/.
+Validation Scorer & Metrics	Evaluation	validation/scorer_v1.py, validation/metrics.py	ACTIVE	Correctly computes competition Macro F0.5 per S1 entity with special no-match handling.	Authoritative and frozen validation standard.
+Fold Partition Manifest	Validation	P3/reports/folds_v1_manifest.tsv	ACTIVE	Authoritative 5-fold split manifest across 2,206,821 S1 entities, seed 314159.	Frozen standard for all CV evaluations.
+Person 1 Step 1 Test Candidates	Candidate Pipeline	outputs/person1_step1/test_candidate_pairs_s{2,3}.tsv	STALE	Only contains Strategy B (Rules A+B), missing Rules C+D (V1) and Rules E-I (V2).	Causes train/test candidate distribution mismatch when scored.
+finish_pipeline.py	Model Pipeline	P2/scripts/finish_pipeline.py	OBSOLETE	Contains house number regex inconsistency (\\b[0-9]+\\b vs [0-9]+[A-Za-z]?) and references stale P1 test candidates.	Do not use for canonical test scoring.
+phase3_to_8_pipeline.py	Model Pipeline	P2/scripts/phase3_to_8_pipeline.py	OBSOLETE	References non-existent train_strategy_b_candidates_*.tsv files and old paths.	Superseded by e02_train_lgb.py and cands_BCD_v1_tasks.py.
+src/normalization.py	Utility Module	src/normalization.py	STALE	Not imported by any active production script (only in src/ internal and exploratory notebooks).	Production pipeline uses DuckDB SQL directly.
+src/blocking.py	Utility Module	src/blocking.py	STALE	Not imported by any active production script.	Production blocking implemented directly in DuckDB SQL inside P2 scripts.
+src/features.py	Utility Module	src/features.py	STALE	Not imported by any active production script.	Production feature engineering implemented directly in DuckDB SQL inside e02_train_lgb.py.
+src/loading.py & src/evaluation.py	Utility Module	src/loading.py, src/evaluation.py	STALE	Exploratory python helpers not connected to production runner.	Canonical evaluation uses validation/scorer_v1.py.

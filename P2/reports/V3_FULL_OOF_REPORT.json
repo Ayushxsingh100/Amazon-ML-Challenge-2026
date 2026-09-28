@@ -1,0 +1,335 @@
+{
+  "pipeline": "V3 Full-Universe Out-of-Fold (OOF) Inference",
+  "timestamp_utc": "2026-09-27 07:34:01Z",
+  "total_candidate_rows": 93171949,
+  "captured_positive_labels": 5511986,
+  "total_negative_labels": 87659963,
+  "per_fold_stats": {
+    "0": {
+      "rows": 18557806,
+      "positives": 1100786
+    },
+    "1": {
+      "rows": 18671223,
+      "positives": 1103649
+    },
+    "2": {
+      "rows": 18613143,
+      "positives": 1103191
+    },
+    "3": {
+      "rows": 18616336,
+      "positives": 1101707
+    },
+    "4": {
+      "rows": 18713441,
+      "positives": 1102653
+    }
+  },
+  "model_to_fold_mapping": {
+    "fold_0": "lgb_fold0.txt",
+    "fold_1": "lgb_fold1.txt",
+    "fold_2": "lgb_fold2.txt",
+    "fold_3": "lgb_fold3.txt",
+    "fold_4": "lgb_fold4.txt"
+  },
+  "sample_reproduction_diagnostic": {
+    "sample_rows": 14282556,
+    "sample_positives": 5511986,
+    "pred_positives": 5430010,
+    "tp": 5318379,
+    "fp": 111631,
+    "fn": 193607,
+    "precision": 0.9794418426485403,
+    "recall": 0.9648752736309563,
+    "pairwise_f0.5": 0.9764934492938572,
+    "macro_f0.5": 0.8417805233129241
+  },
+  "153_pair_check": {
+    "pairwise_tp": 5318379,
+    "status": "5,318,379",
+    "metric_routine": "np.sum((probs >= 0.60) & (y_true == 1)) on 14,282,556 deterministic sampled subset"
+  },
+  "full_universe_threshold_diagnostics": [
+    {
+      "threshold": 0.5,
+      "pred_positives": 6787961,
+      "tp": 5356705,
+      "fp": 1431256,
+      "fn_candidate_universe": 155281,
+      "fn_full_ground_truth": 2281660,
+      "pairwise_precision": 0.7891478751866724,
+      "pairwise_recall_candidate": 0.9718284843248877,
+      "pairwise_recall_full": 0.7012894775256223,
+      "pairwise_f0.5_cand": 0.81997503048479,
+      "pairwise_f0.5_full": 0.7698581230138628,
+      "predicted_matches_per_s1": 3.0759001296435007
+    },
+    {
+      "threshold": 0.6,
+      "pred_positives": 6432213,
+      "tp": 5318379,
+      "fp": 1113834,
+      "fn_candidate_universe": 193607,
+      "fn_full_ground_truth": 2319986,
+      "pairwise_precision": 0.8268350255192108,
+      "pairwise_recall_candidate": 0.9648752736309563,
+      "pairwise_recall_full": 0.696271911593646,
+      "pairwise_f0.5_cand": 0.8511901953462324,
+      "pairwise_f0.5_full": 0.7969467456635656,
+      "predicted_matches_per_s1": 2.9146962984310916
+    },
+    {
+      "threshold": 0.7,
+      "pred_positives": 6035295,
+      "tp": 5257308,
+      "fp": 777987,
+      "fn_candidate_universe": 254678,
+      "fn_full_ground_truth": 2381057,
+      "pairwise_precision": 0.8710937907757615,
+      "pairwise_recall_candidate": 0.9537956010773613,
+      "pairwise_recall_full": 0.6882766141707027,
+      "pairwise_f0.5_cand": 0.886466558073428,
+      "pairwise_f0.5_full": 0.8271528116591979,
+      "predicted_matches_per_s1": 2.7348366722992035
+    },
+    {
+      "threshold": 0.8,
+      "pred_positives": 5661444,
+      "tp": 5167895,
+      "fp": 493549,
+      "fn_candidate_universe": 344091,
+      "fn_full_ground_truth": 2470470,
+      "pairwise_precision": 0.9128227710103641,
+      "pairwise_recall_candidate": 0.9375740431851605,
+      "pairwise_recall_full": 0.6765708368217543,
+      "pairwise_f0.5_cand": 0.9176679240345875,
+      "pairwise_f0.5_full": 0.8532345361884294,
+      "predicted_matches_per_s1": 2.5654296383802766
+    },
+    {
+      "threshold": 0.9,
+      "pred_positives": 5310242,
+      "tp": 5039826,
+      "fp": 270416,
+      "fn_candidate_universe": 472160,
+      "fn_full_ground_truth": 2598539,
+      "pairwise_precision": 0.9490765204297658,
+      "pairwise_recall_candidate": 0.9143394050710578,
+      "pairwise_recall_full": 0.659804290577892,
+      "pairwise_f0.5_cand": 0.9419195353156141,
+      "pairwise_f0.5_full": 0.8725662050435861,
+      "predicted_matches_per_s1": 2.4062857839398846
+    },
+    {
+      "threshold": 0.95,
+      "pred_positives": 5049732,
+      "tp": 4889338,
+      "fp": 160394,
+      "fn_candidate_universe": 622648,
+      "fn_full_ground_truth": 2749027,
+      "pairwise_precision": 0.9682371262474919,
+      "pairwise_recall_candidate": 0.8870374489340139,
+      "pairwise_recall_full": 0.6401026921337223,
+      "pairwise_f0.5_cand": 0.9508292859600401,
+      "pairwise_f0.5_full": 0.878199255940583,
+      "predicted_matches_per_s1": 2.2882381489028787
+    },
+    {
+      "threshold": 0.97,
+      "pred_positives": 4848017,
+      "tp": 4740167,
+      "fp": 107850,
+      "fn_candidate_universe": 771819,
+      "fn_full_ground_truth": 2898198,
+      "pairwise_precision": 0.9777537908798587,
+      "pairwise_recall_candidate": 0.859974426640416,
+      "pairwise_recall_full": 0.6205735127870952,
+      "pairwise_f0.5_cand": 0.9516858178993669,
+      "pairwise_f0.5_full": 0.8768203972167223,
+      "predicted_matches_per_s1": 2.1968329103266644
+    },
+    {
+      "threshold": 0.98,
+      "pred_positives": 4676970,
+      "tp": 4598148,
+      "fp": 78822,
+      "fn_candidate_universe": 913838,
+      "fn_full_ground_truth": 3040217,
+      "pairwise_precision": 0.9831467809286781,
+      "pairwise_recall_candidate": 0.8342089402984696,
+      "pairwise_recall_full": 0.6019806594735916,
+      "pairwise_f0.5_cand": 0.9492513294664802,
+      "pairwise_f0.5_full": 0.8726382070765683,
+      "predicted_matches_per_s1": 2.1193245850025897
+    },
+    {
+      "threshold": 0.99,
+      "pred_positives": 4339240,
+      "tp": 4293951,
+      "fp": 45289,
+      "fn_candidate_universe": 1218035,
+      "fn_full_ground_truth": 3344414,
+      "pairwise_precision": 0.9895629188521492,
+      "pairwise_recall_candidate": 0.7790206651468273,
+      "pairwise_recall_full": 0.5621557754833659,
+      "pairwise_f0.5_cand": 0.9388169878926647,
+      "pairwise_f0.5_full": 0.8589508238040513,
+      "predicted_matches_per_s1": 1.9662854395530946
+    }
+  ],
+  "score_distribution": {
+    "quantiles": {
+      "p01": 1.6765945474617183e-05,
+      "p05": 6.314516213024035e-05,
+      "p10": 0.0001428848918294534,
+      "p25": 0.0004582517722155899,
+      "p50": 0.0016400293679907918,
+      "p75": 0.009081332944333553,
+      "p90": 0.13351425528526306,
+      "p95": 0.9808125495910645,
+      "p99": 0.9997616410255432,
+      "p99_5": 0.999895453453064,
+      "p99_9": 0.9999661445617676,
+      "p99_95": 0.9999738335609436,
+      "p99_99": 0.9999814629554749
+    },
+    "threshold_counts": {
+      ">=0.50": 6787961,
+      ">=0.60": 6432213,
+      ">=0.70": 6035295,
+      ">=0.80": 5661444,
+      ">=0.90": 5310242,
+      ">=0.95": 5049732,
+      ">=0.99": 4339240
+    }
+  },
+  "entity_level_diagnostics": {
+    "match_counts": {
+      "T=0.60": {
+        "matches_0": 178143,
+        "matches_1": 333784,
+        "matches_2": 478374,
+        "matches_3": 475137,
+        "matches_4plus": 741383,
+        "mean_matches": 2.9146962984310916,
+        "median_matches": 3.0,
+        "p95_matches": 6.0
+      },
+      "T=0.90": {
+        "matches_0": 271175,
+        "matches_1": 417181,
+        "matches_2": 532638,
+        "matches_3": 462520,
+        "matches_4plus": 523307,
+        "mean_matches": 2.4062857839398846,
+        "median_matches": 2.0,
+        "p95_matches": 5.0
+      }
+    },
+    "capture_distribution": [
+      {
+        "capture_status": "PARTIAL_CAPTURE",
+        "entity_count": 1106045,
+        "pct": 50.12
+      },
+      {
+        "capture_status": "FULL_CAPTURE",
+        "entity_count": 847245,
+        "pct": 38.39
+      },
+      {
+        "capture_status": "ZERO_CAPTURE",
+        "entity_count": 130284,
+        "pct": 5.9
+      },
+      {
+        "capture_status": "NO_TRUTH",
+        "entity_count": 123247,
+        "pct": 5.58
+      }
+    ]
+  },
+  "train_test_parity": {
+    "train_candidates_per_s1": 42.21998476541595,
+    "test_candidates_per_s1": 54.946134124155,
+    "train_score_quantiles": {
+      "p50": 0.0016400293679907918,
+      "p75": 0.009081332944333553,
+      "p90": 0.13351425528526306,
+      "p95": 0.9808125495910645,
+      "p99": 0.9997616410255432,
+      "p99_9": 0.9999661445617676
+    },
+    "test_score_quantiles": {
+      "p50": 0.0041,
+      "p75": 0.0544,
+      "p90": 0.7235,
+      "p95": 0.9763,
+      "p99": 0.9996,
+      "p99_9": 1.0
+    },
+    "train_pred_matches_per_s1_t060": 2.9146962984310916,
+    "test_pred_matches_per_s1_t060": 6.252313938347309,
+    "train_pred_matches_per_s1_t090": 2.4062857839398846,
+    "test_pred_matches_per_s1_t090": 4.027247215655129,
+    "distribution_shift_flag": "LARGE_SHIFT_DETECTED"
+  },
+  "performance": {
+    "feature_generation_sec": 196.81705284118652,
+    "scoring_sec": 573.5773513317108,
+    "parquet_writing_sec": 40.51218008995056,
+    "total_runtime_sec": 4506.480077981949,
+    "peak_python_memory_mb": 3322.1182804107666,
+    "temporary_disk_usage_mb": 584.1875,
+    "final_oof_disk_usage_mb": 983.9390335083008,
+    "remaining_e_free_gb": 26.974536895751953
+  },
+  "artifacts": [
+    {
+      "artifact": "v3_train_oof_fold0.parquet",
+      "path": "E:\\predictions\\phase4\\v3_train_oof_fold0.parquet",
+      "fold": 0,
+      "rows": 18557806,
+      "positives": 1100786,
+      "size_mb": 195.91,
+      "sha256": "7ef2b89cc53a664ae4d29219b0efc7ed2b9f7ceea44937be4286826e4b551b7a"
+    },
+    {
+      "artifact": "v3_train_oof_fold1.parquet",
+      "path": "E:\\predictions\\phase4\\v3_train_oof_fold1.parquet",
+      "fold": 1,
+      "rows": 18671223,
+      "positives": 1103649,
+      "size_mb": 197.25,
+      "sha256": "c78b7d89f64ac71f7ed28cefb45802c796a094ee1dfe1885ecae6fc8cb07e099"
+    },
+    {
+      "artifact": "v3_train_oof_fold2.parquet",
+      "path": "E:\\predictions\\phase4\\v3_train_oof_fold2.parquet",
+      "fold": 2,
+      "rows": 18613143,
+      "positives": 1103191,
+      "size_mb": 196.6,
+      "sha256": "0a59abf6e34621dd62fc052ab3125aebc5839135f7e6da883e425a94998e17d3"
+    },
+    {
+      "artifact": "v3_train_oof_fold3.parquet",
+      "path": "E:\\predictions\\phase4\\v3_train_oof_fold3.parquet",
+      "fold": 3,
+      "rows": 18616336,
+      "positives": 1101707,
+      "size_mb": 196.61,
+      "sha256": "5fff058fcdb2ed26facba4e5de165a3cd52e10ba37024b45a760dbf9e3e7967a"
+    },
+    {
+      "artifact": "v3_train_oof_fold4.parquet",
+      "path": "E:\\predictions\\phase4\\v3_train_oof_fold4.parquet",
+      "fold": 4,
+      "rows": 18713441,
+      "positives": 1102653,
+      "size_mb": 197.57,
+      "sha256": "dfa7e8f21bf1422a41cd307fba2ad71be7bd39dbfe0e6bf595891731c3f3eb8e"
+    }
+  ]
+}

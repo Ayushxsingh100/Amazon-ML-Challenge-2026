@@ -1,0 +1,17 @@
+target_source	error_bucket	pair_count	pct_of_missed	definition
+source2	high_name_similarity_house_divergence	294881	23.4957%	Business name Jaro-Winkler >= 0.85, but house number differs or is missing
+source2	missing_house_number_one_side	269779	21.4956%	Exactly one entity lacks an extractable house number
+source2	house_match_moderate_name_variation	168503	13.4261%	Normalized house number matches exactly, business name Jaro-Winkler between 0.60 and 0.85
+source2	indic_devanagari_script	167174	13.3202%	Non-Latin Devanagari script present in S1 or target business name
+source2	unstructured_divergence	164861	13.1359%	Compound variation across both name and address tokens
+source2	house_match_severe_name_variation	126083	10.0461%	Normalized house number matches exactly, but business name Jaro-Winkler < 0.60
+source2	missing_house_number_both_sides	59524	4.7428%	Neither S1 nor target has an extractable house number in address
+source2	zip_match_prefix_mismatch	4239	0.3378%	5-to-6 digit postal code matches, but 3-character name prefix differs
+source3	high_name_similarity_house_divergence	324122	23.8298%	Business name Jaro-Winkler >= 0.85, but house number differs or is missing
+source3	missing_house_number_one_side	273926	20.1394%	Exactly one entity lacks an extractable house number
+source3	house_match_moderate_name_variation	251632	18.5003%	Normalized house number matches exactly, business name Jaro-Winkler between 0.60 and 0.85
+source3	unstructured_divergence	185993	13.6744%	Compound variation across both name and address tokens
+source3	house_match_severe_name_variation	125992	9.2631%	Normalized house number matches exactly, but business name Jaro-Winkler < 0.60
+source3	indic_devanagari_script	112579	8.2769%	Non-Latin Devanagari script present in S1 or target business name
+source3	missing_house_number_both_sides	80374	5.9092%	Neither S1 nor target has an extractable house number in address
+source3	zip_match_prefix_mismatch	5535	0.4069%	5-to-6 digit postal code matches, but 3-character name prefix differs

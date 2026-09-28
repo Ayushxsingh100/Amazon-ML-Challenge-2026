@@ -1,0 +1,11 @@
+# Auto-detect text files and perform LF normalization on checkout
+* text=auto eol=lf
+
+# Explicit syntax definition
+*.py text eol=lf diff=python
+*.sh text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.tsv text eol=lf
+*.csv text eol=lf
+*.ipynb text eol=lf

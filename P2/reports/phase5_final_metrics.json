@@ -1,0 +1,95 @@
+{
+  "test_s1_count": 1732544,
+  "s2_prediction_count": 43841928,
+  "s3_prediction_count": 51354667,
+  "combined_prediction_count": 95196595,
+  "zero_candidate_s1_count": 33425,
+  "zero_positive_s1_count": 131669,
+  "positive_prediction_counts": {
+    "total": 10831951,
+    "s2": 5132268,
+    "s3": 5699683
+  },
+  "positive_multiplicity": {
+    "0_positives": 131669,
+    "1_positive": 241057,
+    "2_positives": 341123,
+    "3_positives": 342467,
+    "4_positives": 259484,
+    "5_positives": 159963,
+    "6_to_10_positives": 159812,
+    "gt_10_positives": 96969,
+    "max_positives": 739,
+    "mean_positives": 6.25205,
+    "percentiles": {
+      "min": 0,
+      "p1": 0.0,
+      "p5": 0.0,
+      "p25": 2.0,
+      "p50": 3.0,
+      "p75": 4.0,
+      "p90": 6.0,
+      "p95": 13.0,
+      "p99": 95.0,
+      "max": 739
+    },
+    "score_gap_top1_top2": {
+      "min": 0.0,
+      "p25": 0.0003,
+      "p50": 0.0012,
+      "p75": 0.0081,
+      "p90": 0.0813,
+      "p95": 0.1924,
+      "p99": 0.3450,
+      "max": 0.3998
+    }
+  },
+  "candidate_count_percentiles": {
+    "min": 0,
+    "p1": 0.0,
+    "p5": 1.0,
+    "p25": 4.0,
+    "p50": 10.0,
+    "p75": 52.0,
+    "p90": 151.0,
+    "p95": 280.0,
+    "p99": 556.0,
+    "max": 3708
+  },
+  "max_score_percentiles": {
+    "min": 0.0,
+    "p1": 0.0,
+    "p5": 0.2251,
+    "p25": 0.9960,
+    "p50": 0.9993,
+    "p75": 0.9998,
+    "p90": 0.9999,
+    "p95": 1.0,
+    "p99": 1.0,
+    "max": 1.0
+  },
+  "threshold": 0.60,
+  "selected_final_policy": "Retain all candidates with model_score >= 0.60 (predicted_match_label == 1), combine S2 and S3 candidates per S1, sort candidate list by model_score DESC and candidate_entity_id ASC, serialize into matched_entity_ids as comma-delimited string, format no-match as empty string with nothing after tab, include all 1,732,544 test S1 entities.",
+  "final_submission_row_count": 1732544,
+  "final_submission_total_lines": 1732545,
+  "final_submission_sha256": "c0d5da59dfafabd771ca5fbd1dba655b41fff458af9ff470e3a2ecb86535bbbc",
+  "final_submission_paths": [
+    "/Users/krishnagera/Amazon-ML-Challenge-2026/P2/predictions/phase5/matching_results.tsv",
+    "/Users/krishnagera/Amazon-ML-Challenge-2026/output/matching_results.tsv"
+  ],
+  "validation_status": "PASS WITH WARNINGS",
+  "historical_phase4_oof_score": {
+    "macro_f0.5": 0.841781,
+    "pairwise_precision": 0.97947,
+    "pairwise_recall": 0.964903,
+    "pairwise_f0.5": 0.976527,
+    "optimal_threshold": 0.6
+  },
+  "newly_measured_phase5_validation_metrics": "NOT REPRODUCIBLE (raw pair-level OOF tables were purged during Phase 4 training to conserve disk; test ground truth is unobserved)",
+  "warnings": [
+    "Raw pair-level out-of-fold candidate prediction tables were purged during Phase 4 training to conserve disk space, precluding new S1-level post-processing sweeps on historical OOF data.",
+    "Phase 4 historical Macro F0.5 = 0.841781 is verified from P2/reports/phase4_oof_sweep_results.json and P2/reports/phase4_modeling_metrics.json.",
+    "Test ground truth is unobserved per competition setup; validation is based on strict schema, entity domain integrity, and test coverage properties."
+  ],
+  "timestamp_utc": "2026-09-27T00:00:00Z"
+}

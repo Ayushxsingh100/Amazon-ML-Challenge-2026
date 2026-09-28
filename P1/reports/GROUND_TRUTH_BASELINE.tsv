@@ -1,0 +1,16 @@
+metric	raw_gt_value	reconstructed_gt_value	match	status	notes
+total_rows	2206821	2206821	YES	VERIFIED_NOW	Exact match across both files
+unique_s1_ids	2206821	2206821	YES	VERIFIED_NOW	No duplicate S1 entities exist in GT
+duplicate_s1_ids	0	0	YES	VERIFIED_NOW	Zero duplicate S1 IDs
+empty_or_null_s1_ids	0	0	YES	VERIFIED_NOW	All S1 IDs are valid non-null strings
+empty_matches_count	123247	123247	YES	VERIFIED_NOW	5.5848% of S1 entities have zero matched entities (structural floor)
+total_exploded_pairs	7638365	7638365	YES	VERIFIED_NOW	Total S1-(S2/S3) ground truth match pairs
+s2_true_pairs	3693619	3693619	YES	VERIFIED_NOW	48.36% of all exploded pairs
+s3_true_pairs	3944746	3944746	YES	VERIFIED_NOW	51.64% of all exploded pairs
+non_s2_non_s3_pairs	0	0	YES	VERIFIED_NOW	100% of targets are S2 or S3
+s1_with_s2_match	1919076	1919076	YES	VERIFIED_NOW	Distinct S1 having at least one S2 match
+s1_with_s3_match	1940545	1940545	YES	VERIFIED_NOW	Distinct S1 having at least one S3 match
+s1_matched_to_both	1776047	1776047	YES	VERIFIED_NOW	80.48% of S1 entities match both S2 and S3
+s1_matched_to_s2_only	143029	143029	YES	VERIFIED_NOW	6.48% of S1 entities match S2 only
+s1_matched_to_s3_only	164498	164498	YES	VERIFIED_NOW	7.45% of S1 entities match S3 only
+sha256_hash	70bc1d8a16c667e0155c2105d0ab2ebe41d7e7a85d8a529e3ca81c6c3a5af037	70bc1d8a16c667e0155c2105d0ab2ebe41d7e7a85d8a529e3ca81c6c3a5af037	YES	VERIFIED_NOW	Exact byte-for-byte SHA256 match

@@ -1,0 +1,278 @@
+{
+  "total_india_missed_pairs": 1187831,
+  "script_direction_breakdown": [
+    {
+      "script_direction": "Both Latin",
+      "pair_count": 597802,
+      "pct_of_india_misses": 50.32719300978001
+    },
+    {
+      "script_direction": "Latin S1 -> Native Indic Target",
+      "pair_count": 590029,
+      "pct_of_india_misses": 49.67280699021999
+    }
+  ],
+  "target_script_detail": [
+    {
+      "tgt_name_script": "Latin / Other",
+      "pair_count": 760849,
+      "pct_of_india_misses": 64.05364062732829
+    },
+    {
+      "tgt_name_script": "Devanagari",
+      "pair_count": 211546,
+      "pct_of_india_misses": 17.809435854090356
+    },
+    {
+      "tgt_name_script": "Telugu",
+      "pair_count": 41535,
+      "pct_of_india_misses": 3.4967095487489384
+    },
+    {
+      "tgt_name_script": "Kannada",
+      "pair_count": 39272,
+      "pct_of_india_misses": 3.3061942313342554
+    },
+    {
+      "tgt_name_script": "Tamil",
+      "pair_count": 35366,
+      "pct_of_india_misses": 2.9773595738787755
+    },
+    {
+      "tgt_name_script": "Bengali",
+      "pair_count": 32349,
+      "pct_of_india_misses": 2.7233672130126254
+    },
+    {
+      "tgt_name_script": "Gujarati",
+      "pair_count": 31895,
+      "pct_of_india_misses": 2.6851462876452965
+    },
+    {
+      "tgt_name_script": "Malayalam",
+      "pair_count": 19930,
+      "pct_of_india_misses": 1.6778481113895831
+    },
+    {
+      "tgt_name_script": "Oriya",
+      "pair_count": 8142,
+      "pct_of_india_misses": 0.6854510448035116
+    },
+    {
+      "tgt_name_script": "Gurmukhi",
+      "pair_count": 6947,
+      "pct_of_india_misses": 0.584847507768361
+    }
+  ],
+  "sample_cross_script_pairs": [
+    {
+      "source1_entity_id": "S1-371560609",
+      "target_entity_id": "S2-323473966",
+      "s1_name": "lakshmi global private limited",
+      "tgt_name": "\u0c32\u0c15 \u0c37 \u0c2e \u0c17 \u0c32 \u0c2c\u0c32 \u0c2a \u0c30 \u0c35 \u0c1f \u0c32 \u0c2e \u0c1f \u0c21",
+      "tgt_name_raw": "\u0c32\u0c15\u0c4d\u0c37\u0c4d\u0c2e\u0c3f \u0c17\u0c4d\u0c32\u0c4b\u0c2c\u0c32\u0c4d \u0c2a\u0c4d\u0c30\u0c48\u0c35\u0c47\u0c1f\u0c4d \u0c32\u0c3f\u0c2e\u0c3f\u0c1f\u0c46\u0c21\u0c4d",
+      "tgt_name_script": "Telugu",
+      "s1_addr": "6-3-1216/115&116, f.n.103, sai praveenkuteer methodist cly, begumpet, hyderabad, telangana",
+      "tgt_addr": "block b-028 6-3-1216/115&116, f.n.103, sai praveenkuteer methodist cly, begumpet, hyderabad, telangana"
+    },
+    {
+      "source1_entity_id": "S1-321811299",
+      "target_entity_id": "S2-534546248",
+      "s1_name": "balaji foods",
+      "tgt_name": "\u0c2c \u0c32 \u0c1c \u0c2b \u0c21 \u0c38",
+      "tgt_name_raw": "\u0c2c\u0c3e\u0c32\u0c3e\u0c1c\u0c40 \u0c2b\u0c41\u0c21\u0c4d\u0c38\u0c4d",
+      "tgt_name_script": "Telugu",
+      "s1_addr": "shed no. 11a & 11b, type iii industrial estate, kukatpally, tirumalagiri, hyderabad, telangana",
+      "tgt_addr": "type iii industrial estate, kukatpally, tirumalagiri, shed no. 11a & 11b, telangana, hyderabad"
+    },
+    {
+      "source1_entity_id": "S1-314819932",
+      "target_entity_id": "S2-630918080",
+      "s1_name": "ss builders pvt ltd",
+      "tgt_name": "\u0d0e\u0d38 \u0d0e\u0d38 \u0d2c \u0d7d\u0d21 \u0d34 \u0d38 \u0d2a \u0d30 \u0d35\u0d31 \u0d31 \u0d32 \u0d2e \u0d31 \u0d31\u0d21",
+      "tgt_name_raw": "\u0d0e\u0d38\u0d4d\u0d0e\u0d38\u0d4d \u0d2c\u0d3f\u0d7d\u0d21\u0d47\u0d34\u0d4d\u0d38\u0d4d \u0d2a\u0d4d\u0d30\u0d48\u0d35\u0d31\u0d4d\u0d31\u0d4d \u0d32\u0d3f\u0d2e\u0d3f\u0d31\u0d4d\u0d31\u0d21\u0d4d",
+      "tgt_name_script": "Malayalam",
+      "s1_addr": "tc 32/1069 (3), vettukadu, beach p.o., thiruvananthapuram, thiruvananthapuram, trivandrum, kerala",
+      "tgt_addr": "tc 32/1069 (3), thiruvananthapuram, kerala"
+    },
+    {
+      "source1_entity_id": "S1-433362304",
+      "target_entity_id": "S2-179113193",
+      "s1_name": "unique vijay logistics pvt ltd",
+      "tgt_name": "\u092f \u0928 \u0915 \u0935 \u091c\u092f \u0932 \u091c \u0938 \u091f \u0915 \u0938 \u092a \u0930 . \u0932 .",
+      "tgt_name_raw": "\u092f\u0942\u0928\u093f\u0915 \u0935\u093f\u091c\u092f \u0932\u0949\u091c\u093f\u0938\u094d\u091f\u093f\u0915\u094d\u0938 \u092a\u094d\u0930\u093e. \u0932\u093f.",
+      "tgt_name_script": "Devanagari",
+      "s1_addr": "solapur, near old rto office, solapur, maharashtra, solapur, railway lines",
+      "tgt_addr": "railway lines, near old rto office, solapur, solapur, maharashtra"
+    },
+    {
+      "source1_entity_id": "S1-605443000",
+      "target_entity_id": "S3-899531834",
+      "s1_name": "life infotech private limited",
+      "tgt_name": "\u09b2 \u0987\u09ab \u0987\u09a8\u09ab \u099f \u0995 \u09aa \u09b0 \u0987\u09ad \u099f \u09b2 \u09ae \u099f \u09a1",
+      "tgt_name_raw": "\u09b2\u09be\u0987\u09ab \u0987\u09a8\u09ab\u09cb\u099f\u09c7\u0995 \u09aa\u09cd\u09b0\u09be\u0987\u09ad\u09c7\u099f \u09b2\u09bf\u09ae\u09bf\u099f\u09c7\u09a1",
+      "tgt_name_script": "Bengali",
+      "s1_addr": "32/3, b. b. ghosh lane, belur, howrah, west bengal",
+      "tgt_addr": "no. 438 32/3, b. b. ghosh lane, belur, howrah, wb"
+    },
+    {
+      "source1_entity_id": "S1-447308125",
+      "target_entity_id": "S3-501376685",
+      "s1_name": "alchemy traders care",
+      "tgt_name": "mr alchemy traders care limited",
+      "tgt_name_raw": "Mr Alchemy Traders Care Limited",
+      "tgt_name_script": "Latin / Other",
+      "s1_addr": "327, kirti shikhar 3rd floor district centre, janakpuri, west delhi, delhi",
+      "tgt_addr": "327, kirti shikhar 3rd floor district centre, janakpuri, west delhi, \u0926 \u0932 \u0932"
+    },
+    {
+      "source1_entity_id": "S1-301488886",
+      "target_entity_id": "S2-251483316",
+      "s1_name": "shree industries private limited",
+      "tgt_name": "\u0ab6 \u0ab0 \u0a87\u0aa8 \u0aa1\u0ab8 \u0a9f \u0ab0 \u0a9d \u0aaa \u0ab0 \u0a87\u0ab5 \u0a9f \u0ab2 \u0aae \u0a9f \u0aa1",
+      "tgt_name_raw": "\u0ab6\u0acd\u0ab0\u0ac0 \u0a87\u0aa8\u0acd\u0aa1\u0ab8\u0acd\u0a9f\u0acd\u0ab0\u0ac0\u0a9d \u0aaa\u0acd\u0ab0\u0abe\u0a87\u0ab5\u0ac7\u0a9f \u0ab2\u0abf\u0aae\u0abf\u0a9f\u0ac7\u0aa1",
+      "tgt_name_script": "Gujarati",
+      "s1_addr": "office no 609, 6th floor-9, opp. dream rise, nr. hetarth party plot, science city roa, d, sola, ahmedabad, gujarat",
+      "tgt_addr": "ahmedabad, \u0a97 \u0a9c\u0ab0 \u0aa4, ahmedabad, office no 609"
+    },
+    {
+      "source1_entity_id": "S1-345667413",
+      "target_entity_id": "S2-561263018",
+      "s1_name": "unique technology private limited",
+      "tgt_name": "\u092f \u0928 \u0915 \u091f \u0915 \u0928 \u0932 \u091c \u092a \u0930 \u0907\u0935 \u091f \u0932 \u092e \u091f \u0921",
+      "tgt_name_raw": "\u092f\u0942\u0928\u093f\u0915 \u091f\u0947\u0915\u094d\u0928\u094b\u0932\u0949\u091c\u0940 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921",
+      "tgt_name_script": "Devanagari",
+      "s1_addr": "flat no. 402, building go, golden square, sunder nag, maharashtra, mumbai",
+      "tgt_addr": "402, mumbai, \u092e\u0939 \u0930 \u0937 \u091f \u0930"
+    },
+    {
+      "source1_entity_id": "S1-988660459",
+      "target_entity_id": "S3-248550292",
+      "s1_name": "ss infra",
+      "tgt_name": "\u0a8f\u0ab8\u0a8f\u0ab8 \u0a87\u0aa8 \u0aab \u0ab0",
+      "tgt_name_raw": "\u0a8f\u0ab8\u0a8f\u0ab8 \u0a87\u0aa8\u0acd\u0aab\u0acd\u0ab0\u0abe",
+      "tgt_name_script": "Gujarati",
+      "s1_addr": "block no. 214/1 sarsa, pariya road, po. kanera, ta. kheda, kheda, gujarat",
+      "tgt_addr": "block no. 214/1 sarsa, pariya road, po. kanera, ta. kheda, kheda, gj"
+    },
+    {
+      "source1_entity_id": "S1-933990339",
+      "target_entity_id": "S2-340977545",
+      "s1_name": "cbd belapur industries limited",
+      "tgt_name": "services cbd industries limited",
+      "tgt_name_raw": "Services Cbd Industries Limited",
+      "tgt_name_script": "Latin / Other",
+      "s1_addr": "h - 301, kukreja estate, sector 11, plot no. 36, cbd belapur, navi mumbai, maharashtra",
+      "tgt_addr": "h - 301, kukreja estate, sector 11, plot no. 36, panvel, navi mumbai, \u092e\u0939 \u0930 \u0937 \u091f \u0930"
+    }
+  ],
+  "transliteration_benchmark": [
+    {
+      "Transformation": "Baseline (No Transliteration)",
+      "Exact Match %": 0.0,
+      "Prefix-4 Match %": 12.103514248313363,
+      "Mean JW Similarity": 0.256166843050605,
+      "Token Overlap >= 1 %": 26.351827610512537,
+      "Token Overlap >= 2 %": 22.99869096767697,
+      "Elapsed Sec": 0.22
+    },
+    {
+      "Transformation": "T1: Raw Unicode Transliteration",
+      "Exact Match %": 0.17118114993454836,
+      "Prefix-4 Match %": 31.93031920249723,
+      "Mean JW Similarity": 0.8183032592366749,
+      "Token Overlap >= 1 %": 45.71543651193233,
+      "Token Overlap >= 2 %": 27.832041083475982,
+      "Elapsed Sec": 0.63
+    },
+    {
+      "Transformation": "T2: Transliteration + Schwa Deletion",
+      "Exact Match %": 0.2920149028295237,
+      "Prefix-4 Match %": 32.3935152552613,
+      "Mean JW Similarity": 0.8285584345938888,
+      "Token Overlap >= 1 %": 75.1888027388984,
+      "Token Overlap >= 2 %": 35.62581814520189,
+      "Elapsed Sec": 0.6
+    },
+    {
+      "Transformation": "T3: Phonetic Transformations",
+      "Exact Match %": 0.3121538616453529,
+      "Prefix-4 Match %": 28.124055986305507,
+      "Mean JW Similarity": 0.8317990026332966,
+      "Token Overlap >= 1 %": 74.65512033027892,
+      "Token Overlap >= 2 %": 33.87372872822475,
+      "Elapsed Sec": 0.7
+    },
+    {
+      "Transformation": "T4: Transliteration + Legal Suffix Normalization",
+      "Exact Match %": 1.8729231698721178,
+      "Prefix-4 Match %": 28.13412546571342,
+      "Mean JW Similarity": 0.8345318154550284,
+      "Token Overlap >= 1 %": 75.59158191521497,
+      "Token Overlap >= 2 %": 56.12727821971604,
+      "Elapsed Sec": 1.04
+    }
+  ],
+  "indic_retrieval_channels": [
+    {
+      "channel_key": "transliterated_name_exact_cap5",
+      "description": "Exact Match on Transliterated Name (len>=6, cluster<=5)",
+      "added_candidates_train": 144698,
+      "candidates_per_s1": 0.06556852594750548,
+      "recovered_true_pairs": 1921,
+      "recovered_pairs_f4": 399,
+      "recovered_india": 1921,
+      "zero_capture_rescued": 472,
+      "fold4_oracle_gain": 0.00025565086968393214,
+      "global_oracle_gain": 0.000237546091143237,
+      "india_oracle_gain": 0.09156973056277773,
+      "gain_per_million_cands": 0.0016416681028295968,
+      "elapsed_sec": 0.44
+    },
+    {
+      "channel_key": "transliterated_name_exact_cap10",
+      "description": "Exact Match on Transliterated Name (len>=6, cluster<=10)",
+      "added_candidates_train": 172533,
+      "candidates_per_s1": 0.07818169212636639,
+      "recovered_true_pairs": 2680,
+      "recovered_pairs_f4": 582,
+      "recovered_india": 2680,
+      "zero_capture_rescued": 583,
+      "fold4_oracle_gain": 0.0003432214892811203,
+      "global_oracle_gain": 0.0003104612235961257,
+      "india_oracle_gain": 0.09175192353360528,
+      "gain_per_million_cands": 0.0017994309702846743,
+      "elapsed_sec": 0.94
+    },
+    {
+      "channel_key": "transliterated_prefix4_locality",
+      "description": "Transliterated Prefix-4 + Shared Locality Tokens (>=2)",
+      "added_candidates_train": 500000,
+      "candidates_per_s1": 0.22657025649112456,
+      "recovered_true_pairs": 1016,
+      "recovered_pairs_f4": 222,
+      "recovered_india": 1016,
+      "zero_capture_rescued": 156,
+      "fold4_oracle_gain": 0.0001164775123719819,
+      "global_oracle_gain": 9.904352921452642e-05,
+      "india_oracle_gain": 0.09122365434546242,
+      "gain_per_million_cands": 0.00019808705842905283,
+      "elapsed_sec": 0.96
+    },
+    {
+      "channel_key": "sibling_transliterated_name",
+      "description": "Sibling Transliterated Name Expansion (S1->S2->S3_Indic)",
+      "added_candidates_train": 21767,
+      "candidates_per_s1": 0.009863509546084616,
+      "recovered_true_pairs": 297,
+      "recovered_pairs_f4": 54,
+      "recovered_india": 297,
+      "zero_capture_rescued": 0,
+      "fold4_oracle_gain": 1.6285487634770668e-05,
+      "global_oracle_gain": 1.5691109399473824e-05,
+      "india_oracle_gain": 0.09101538173481827,
+      "gain_per_million_cands": 0.0007208668810343099,
+      "elapsed_sec": 0.78
+    }
+  ]
+}

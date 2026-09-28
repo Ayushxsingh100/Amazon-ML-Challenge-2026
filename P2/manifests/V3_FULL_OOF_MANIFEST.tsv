@@ -1,0 +1,6 @@
+artifact	path	fold	rows	positives	size_mb	sha256
+v3_train_oof_fold0.parquet	E:\predictions\phase4\v3_train_oof_fold0.parquet	0	18557806	1100786	195.91	7ef2b89cc53a664ae4d29219b0efc7ed2b9f7ceea44937be4286826e4b551b7a
+v3_train_oof_fold1.parquet	E:\predictions\phase4\v3_train_oof_fold1.parquet	1	18671223	1103649	197.25	c78b7d89f64ac71f7ed28cefb45802c796a094ee1dfe1885ecae6fc8cb07e099
+v3_train_oof_fold2.parquet	E:\predictions\phase4\v3_train_oof_fold2.parquet	2	18613143	1103191	196.6	0a59abf6e34621dd62fc052ab3125aebc5839135f7e6da883e425a94998e17d3
+v3_train_oof_fold3.parquet	E:\predictions\phase4\v3_train_oof_fold3.parquet	3	18616336	1101707	196.61	5fff058fcdb2ed26facba4e5de165a3cd52e10ba37024b45a760dbf9e3e7967a
+v3_train_oof_fold4.parquet	E:\predictions\phase4\v3_train_oof_fold4.parquet	4	18713441	1102653	197.57	dfa7e8f21bf1422a41cd307fba2ad71be7bd39dbfe0e6bf595891731c3f3eb8e

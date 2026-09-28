@@ -1,0 +1,5 @@
+channel_key	description	added_candidates_train	candidates_per_s1	recovered_true_pairs	recovered_pairs_f4	recovered_india	zero_capture_rescued	fold4_oracle_gain	global_oracle_gain	india_oracle_gain	gain_per_million_cands	elapsed_sec
+transliterated_name_exact_cap5	Exact Match on Transliterated Name (len>=6, cluster<=5)	144698	0.06556852594750548	1921	399	1921	472	0.00025565086968393214	0.000237546091143237	0.09156973056277773	0.0016416681028295968	0.44
+transliterated_name_exact_cap10	Exact Match on Transliterated Name (len>=6, cluster<=10)	172533	0.07818169212636639	2680	582	2680	583	0.0003432214892811203	0.0003104612235961257	0.09175192353360528	0.0017994309702846743	0.94
+transliterated_prefix4_locality	Transliterated Prefix-4 + Shared Locality Tokens (>=2)	500000	0.22657025649112456	1016	222	1016	156	0.0001164775123719819	9.904352921452642e-05	0.09122365434546242	0.00019808705842905283	0.96
+sibling_transliterated_name	Sibling Transliterated Name Expansion (S1->S2->S3_Indic)	21767	0.009863509546084616	297	54	297	0	1.6285487634770668e-05	1.5691109399473824e-05	0.09101538173481827	0.0007208668810343099	0.78

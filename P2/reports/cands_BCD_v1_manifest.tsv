@@ -1,0 +1,5 @@
+candidate_family	generator_script	git_sha	extractor_spec	input_dataset	rule_defs	per_rule_vols	union_volume	row_count	distinct_s1	labels	det_hash
+cands_BCD_v1	P2/scripts/cands_BCD_v1_tasks.py	9dfb66980c169f215abc20f3e85bfedcb5908be6	[0-9]+[A-Za-z]?	train_s2	A,B,C,D	B=5139348,C=288037,D=7820064	24594064	24594064	1859868	pos=2214137,neg=22379927	b0babba4e35378f7b1f7e282625409de8513a5c88c4ef7605563188e8e5499cd
+cands_BCD_v1	P2/scripts/cands_BCD_v1_tasks.py	9dfb66980c169f215abc20f3e85bfedcb5908be6	[0-9]+[A-Za-z]?	train_s3	A,B,C,D	B=6186775,C=436385,D=8544954	29998661	29998661	1881377	pos=2346442,neg=27652219	011fb8228d2112c9d18d4e1756f903925ed9750033abac7aff6962a5ea9800ed
+cands_BCD_v1	P2/scripts/cands_BCD_v1_tasks.py	9dfb66980c169f215abc20f3e85bfedcb5908be6	[0-9]+[A-Za-z]?	test_s2	A,B,C,D	B=6035793,C=415084,D=3771073	30232352	30232352	1478061	pos=0,neg=0	5bc2b84efc6ff6644dfbba17559b46f274fdafebc810b5cf1dda797e3cf7c3f8
+cands_BCD_v1	P2/scripts/cands_BCD_v1_tasks.py	9dfb66980c169f215abc20f3e85bfedcb5908be6	[0-9]+[A-Za-z]?	test_s3	A,B,C,D	B=7058990,C=575904,D=4469128	35822910	35822910	1493071	pos=0,neg=0	89a053a9e30aafa9a2f37d1e49917636dfec55ba8c567db55f4bbc95c9004dbc

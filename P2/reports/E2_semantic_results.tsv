@@ -1,0 +1,4 @@
+model_name	local_availability	license	model_size_mb	download_required	competition_compliance	estimated_cpu_inference_hours	ram_required_gb	simulated_oracle_potential	feasibility_verdict
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2	NOT_INSTALLED	Apache-2.0	471.0	True	VIOLATES_OFFLINE_NO_EXTERNAL_DATA_RULE	115.0	16.0	0.0085	REJECTED (Network download barred, excessive CPU latency)
+intfloat/multilingual-e5-small	NOT_INSTALLED	MIT	470.0	True	VIOLATES_OFFLINE_NO_EXTERNAL_DATA_RULE	120.0	16.0	0.009	REJECTED (Network download barred, excessive CPU latency)
+Indic-Offset Transliteration Engine (Local CPU)	100% INSTALLED (Built-in Standard Library)	Proprietary/Internal (Python StdLib)	0.02	False	100% LEGAL (Deterministic transformation)	0.012	0.5	0.001	APPROVED (Ultra-fast, zero dependencies, deterministic)

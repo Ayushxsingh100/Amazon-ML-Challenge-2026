@@ -1,0 +1,15 @@
+dataset	split	source	rows	unique_entity_ids	duplicate_ids	null_entity_ids	empty_entity_ids	columns	column_names	status
+train_source1	train	source1	2206821	2206821	0	0	0	4	entity_id,business_name,business_address,country	PASS
+train_source2	train	source2	5034616	5034616	0	0	0	4	entity_id,business_name,business_address,country	PASS
+train_source3	train	source3	5285603	5285603	0	0	0	4	entity_id,business_name,business_address,country	PASS
+test_source1	test	source1	1732544	1732544	0	0	0	4	entity_id,business_name,business_address,country	PASS
+test_source2	test	source2	4887273	4887273	0	0	0	4	entity_id,business_name,business_address,country	PASS
+test_source3	test	source3	5082316	5082316	0	0	0	4	entity_id,business_name,business_address,country	PASS
+train_ground_truth	train	ground_truth	2206821	2206821	0	0	0	2	source1_entity_id,matched_entity_ids	PASS
+train_source1_normalized	train	source1	2206821	2206821	0	0	0	4	entity_id,business_name,business_address,country	PASS
+train_source2_normalized	train	source2	5034616	5034616	0	0	0	4	entity_id,business_name,business_address,country	PASS
+train_source3_normalized	train	source3	5285603	5285603	0	0	0	4	entity_id,business_name,business_address,country	PASS
+test_source1_normalized	test	source1	1732544	1732544	0	0	0	4	entity_id,business_name,business_address,country	PASS
+test_source2_normalized	test	source2	4887273	4887273	0	0	0	4	entity_id,business_name,business_address,country	PASS
+test_source3_normalized	test	source3	5082316	5082316	0	0	0	4	entity_id,business_name,business_address,country	PASS
+train_ground_truth_reconstructed	train	ground_truth	2206821	2206821	0	0	0	2	source1_entity_id,matched_entity_ids	PASS

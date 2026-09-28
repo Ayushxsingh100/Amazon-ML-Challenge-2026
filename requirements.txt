@@ -1,0 +1,25 @@
+# Core Scientific & Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+polars>=0.20.0
+pyarrow>=12.0.0
+scipy>=1.10.0
+
+# Machine Learning & Modeling
+scikit-learn>=1.2.0
+lightgbm>=4.0.0
+
+# Database & In-Memory Analytics
+duckdb>=0.9.0
+
+# Fast String Matching & Sparse Ops
+rapidfuzz>=3.0.0
+sparse_dot_topn>=0.3.5
+
+# Utilities & Progress
+tqdm>=4.65.0
+
+# Jupyter Notebooks & Interactive Exploration
+jupyter>=1.0.0
+ipykernel>=6.20.0
+notebook>=7.0.0

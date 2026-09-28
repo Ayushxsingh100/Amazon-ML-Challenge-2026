@@ -1,0 +1,144 @@
+{
+  "residual_miss_total": 2126379,
+  "overall_summary": {
+    "total_missed": 2126379,
+    "country_mismatch_pct": 0.0,
+    "prefix4_mismatch_pct": 0.5916052594575097,
+    "exact_name_failure_pct": 0.9999934160373104,
+    "legal_suffix_variation_pct": 0.09207389651609614,
+    "token_order_variation_pct": 0.2735514223945966,
+    "typo_char_variation_pct": 0.05754618532256009,
+    "missing_house_number_pct": 0.2585526851045839,
+    "house_number_disagreement_pct": 0.3955790571671372,
+    "pin_shared_pct": 0.0030065195339118757,
+    "pin_absent_pct": 0.9920221183523728,
+    "locality_token_shared_pct": 0.8679680339205758,
+    "landmark_style_pct": 0.44818962188772554,
+    "raw_exact_name_pct": 0.0,
+    "raw_exact_addr_pct": 0.0,
+    "norm_exact_name_pct": 0.0,
+    "norm_exact_addr_pct": 0.0,
+    "cross_script_indic_pct": 0.27275570347525063,
+    "strong_name_token_overlap_pct": 0.6030430134985344,
+    "weak_name_token_overlap_pct": 0.07360917315304562,
+    "no_obvious_lexical_relation_pct": 0.26504494259960243,
+    "avg_name_jw": 0.7430582071594296
+  },
+  "by_country": [
+    {
+      "country": "INDIA",
+      "missed_pairs": 1187831,
+      "share_of_all_misses_pct": 55.86167846841979,
+      "prefix4_mismatch_pct": 0.7094704549721299,
+      "legal_suffix_variation_pct": 0.09902334591368638,
+      "token_order_variation_pct": 0.2655200950303536,
+      "typo_char_variation_pct": 0.04295139628448828,
+      "cross_script_indic_pct": 0.488269795955822,
+      "pin_shared_pct": 0.0006162492812529729,
+      "pin_absent_pct": 0.9992978799172609,
+      "landmark_style_pct": 0.6682036417638536,
+      "strong_token_overlap_pct": 0.5121848141696925,
+      "avg_name_jw": 0.6690183305893364
+    },
+    {
+      "country": "US",
+      "missed_pairs": 938548,
+      "share_of_all_misses_pct": 44.13832153158021,
+      "prefix4_mismatch_pct": 0.44243448390492546,
+      "legal_suffix_variation_pct": 0.08327863891884059,
+      "token_order_variation_pct": 0.283715910107954,
+      "typo_char_variation_pct": 0.07601742265712569,
+      "cross_script_indic_pct": 0.0,
+      "pin_shared_pct": 0.0060316574112352275,
+      "pin_absent_pct": 0.9828138784590665,
+      "landmark_style_pct": 0.16973878800018752,
+      "strong_token_overlap_pct": 0.7180336008387423,
+      "avg_name_jw": 0.8367634418691922
+    }
+  ],
+  "by_target_source": [
+    {
+      "target_source": "source3",
+      "missed_pairs": 1109961,
+      "share_of_all_misses_pct": 52.19958436384106,
+      "prefix4_mismatch_pct": 0.5908594986670703,
+      "legal_suffix_variation_pct": 0.0927510065668974,
+      "cross_script_indic_pct": 0.2287431720573966,
+      "pin_shared_pct": 0.003541565874837044,
+      "pin_absent_pct": 0.9916663738635862,
+      "strong_token_overlap_pct": 0.6410450457268319,
+      "avg_name_jw": 0.7578987621412334
+    },
+    {
+      "target_source": "source2",
+      "missed_pairs": 1016418,
+      "share_of_all_misses_pct": 47.80041563615894,
+      "prefix4_mismatch_pct": 0.5924196541186795,
+      "legal_suffix_variation_pct": 0.09133447066069275,
+      "cross_script_indic_pct": 0.32081879699100174,
+      "pin_shared_pct": 0.002422231798334937,
+      "pin_absent_pct": 0.9924106027244697,
+      "strong_token_overlap_pct": 0.5615435775438845,
+      "avg_name_jw": 0.7268518459498088
+    }
+  ],
+  "by_capture_bucket": [
+    {
+      "capture_bucket": "PARTIAL_CAPTURE",
+      "missed_pairs": 1807455,
+      "entity_count": 1106045,
+      "prefix4_mismatch_pct": 0.5828344274131306,
+      "legal_suffix_variation_pct": 0.09164543515606198,
+      "cross_script_indic_pct": 0.23964690683862117,
+      "pin_shared_pct": 0.0033572066801109846,
+      "pin_absent_pct": 0.991304347826087,
+      "strong_token_overlap_pct": 0.6209283218669345,
+      "avg_name_jw": 0.7547542990716476
+    },
+    {
+      "capture_bucket": "ZERO_CAPTURE",
+      "missed_pairs": 318924,
+      "entity_count": 130284,
+      "prefix4_mismatch_pct": 0.6413126638321356,
+      "legal_suffix_variation_pct": 0.0945021384405062,
+      "cross_script_indic_pct": 0.4603949530295619,
+      "pin_shared_pct": 0.0010190515608734369,
+      "pin_absent_pct": 0.9960899775495102,
+      "strong_token_overlap_pct": 0.5016806511896251,
+      "avg_name_jw": 0.6767723214716536
+    }
+  ],
+  "zero_capture_forensics": {
+    "total_zero_capture_entities": 130284,
+    "recoverable_by_shared_pin_pct": 0.0019035338184274354,
+    "s1_missing_pin_pct": 0.9822848546252801,
+    "recoverable_by_locality_tokens_pct": 0.95800712290074,
+    "recoverable_by_suffix_stripped_name_pct": 0.19184243652328759,
+    "recoverable_by_char_ngram_jw85_pct": 0.5650271714101501,
+    "affected_by_transliteration_script_pct": 0.5640447023425746,
+    "recoverable_by_name_token_overlap_pct": 0.6966933775444414,
+    "recoverable_by_raw_exact_name_pct": 0.0
+  },
+  "zero_capture_by_country": [
+    {
+      "country": "US",
+      "zero_capture_entities": 33979,
+      "recoverable_by_shared_pin_pct": 0.005944848288648871,
+      "s1_missing_pin_pct": 0.9347243885929545,
+      "recoverable_by_suffix_stripped_name_pct": 0.14070455281203095,
+      "recoverable_by_char_ngram_jw85_pct": 0.7820712793195798,
+      "affected_by_transliteration_script_pct": 0.0,
+      "recoverable_by_token_overlap_pct": 0.8270696606727684
+    },
+    {
+      "country": "INDIA",
+      "zero_capture_entities": 96305,
+      "recoverable_by_shared_pin_pct": 0.0004776491355589014,
+      "s1_missing_pin_pct": 0.9990654690826022,
+      "recoverable_by_suffix_stripped_name_pct": 0.20988526037069727,
+      "recoverable_by_char_ngram_jw85_pct": 0.4884481594932766,
+      "affected_by_transliteration_script_pct": 0.7630548777322049,
+      "recoverable_by_token_overlap_pct": 0.6506931104304035
+    }
+  ]
+}

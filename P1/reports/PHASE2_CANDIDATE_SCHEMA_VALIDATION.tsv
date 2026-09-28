@@ -1,0 +1,11 @@
+candidate_file	split	source	column_names	row_count	unique_pairs_count	duplicate_count	null_source1_count	null_target_count	self_match_count	malformed_source1_count	malformed_target_count	invalid_source1_id_count	invalid_target_id_count	cross_country_count	schema_valid_status
+P2/data/candidates/train_candidate_pairs_s2.tsv	train	S2	source1_entity_id,matched_entity_id,label	24594064	24594064	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/train_candidate_pairs_s3.tsv	train	S3	source1_entity_id,matched_entity_id,label	29998661	29998661	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/train_candidate_pairs_s2_v2.tsv	train	S2	source1_entity_id,matched_entity_id,label	30359040	30359040	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/train_candidate_pairs_s3_v2.tsv	train	S3	source1_entity_id,matched_entity_id,label	36973484	36973484	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/test_candidate_pairs_s2.tsv	test	S2	source1_entity_id,matched_entity_id	30232352	30232352	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/test_candidate_pairs_s3.tsv	test	S3	source1_entity_id,matched_entity_id	35822910	35822910	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/test_candidate_pairs_s2_v2.tsv	test	S2	source1_entity_id,matched_entity_id	34919169	34919169	0	0	0	0	0	0	0	0	0	PASS
+P2/data/candidates/test_candidate_pairs_s3_v2.tsv	test	S3	source1_entity_id,matched_entity_id	41714627	41714627	0	0	0	0	0	0	0	0	0	PASS
+outputs/person1_step1/test_candidate_pairs_s2.tsv	test	S2	source1_entity_id,matched_entity_id	26046195	26046195	0	0	0	0	0	0	0	0	0	PASS
+outputs/person1_step1/test_candidate_pairs_s3.tsv	test	S3	source1_entity_id,matched_entity_id	30777878	30777878	0	0	0	0	0	0	0	0	0	PASS

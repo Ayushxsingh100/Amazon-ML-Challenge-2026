@@ -1,0 +1,46 @@
+{
+  "S2": {
+    "gt_total_true_pairs": 3693619,
+    "total_candidate_pairs": 15709355,
+    "captured_true_pairs": 2002604,
+    "candidate_recall": 0.542179,
+    "candidate_precision": 0.127478,
+    "unique_s1_in_candidates": 1639772,
+    "s1_with_zero_candidates": 567049,
+    "fully_covered_s1": 803012,
+    "total_s1_with_gt": 1919076,
+    "total_s1": 2206821,
+    "candidate_distribution": {
+      "mean": 9.58,
+      "median": 2.0,
+      "p90": 19.0,
+      "p95": 44.0,
+      "p99": 124.0,
+      "max": 1296,
+      "min": 1
+    },
+    "output_file": "C:\\NEW AMAZON\\Amazon-ML-Challenge-2026\\P2\\data\\candidates\\train_strategy_b_candidates_s2.tsv"
+  },
+  "S3": {
+    "gt_total_true_pairs": 3944746,
+    "total_candidate_pairs": 19882460,
+    "captured_true_pairs": 2101407,
+    "candidate_recall": 0.53271,
+    "candidate_precision": 0.105691,
+    "unique_s1_in_candidates": 1662415,
+    "s1_with_zero_candidates": 544406,
+    "fully_covered_s1": 749312,
+    "total_s1_with_gt": 1940545,
+    "total_s1": 2206821,
+    "candidate_distribution": {
+      "mean": 11.96,
+      "median": 3.0,
+      "p90": 24.0,
+      "p95": 61.0,
+      "p99": 164.0,
+      "max": 1630,
+      "min": 1
+    },
+    "output_file": "C:\\NEW AMAZON\\Amazon-ML-Challenge-2026\\P2\\data\\candidates\\train_strategy_b_candidates_s3.tsv"
+  }
+}

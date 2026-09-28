@@ -1,0 +1,9 @@
+metric	S2	S3
+gt_total_true_pairs	3693619	3944746
+total_candidate_pairs	15709355	19882460
+captured_true_pairs	2002604	2101407
+candidate_recall	0.542179	0.53271
+candidate_precision	0.127478	0.105691
+unique_s1_in_candidates	1639772	1662415
+s1_with_zero_candidates	567049	544406
+fully_covered_s1	803012	749312

@@ -1,0 +1,39 @@
+{
+  "model_type": "LightGBM",
+  "feature_list": [
+    "name_exact_match",
+    "name_jaro_winkler",
+    "name_jaccard",
+    "prefix4_match",
+    "first_token_match",
+    "name_len_diff",
+    "name_len_ratio",
+    "address_exact_match",
+    "address_jaro_winkler",
+    "address_jaccard",
+    "address_len_diff",
+    "address_len_ratio",
+    "address_first_number_match",
+    "country_match",
+    "s1_name_len",
+    "tgt_name_len",
+    "s1_addr_len",
+    "tgt_addr_len",
+    "source_is_s3"
+  ],
+  "feature_count": 19,
+  "training_data": {
+    "total_pairs": 35591815,
+    "positives": 4104011,
+    "negatives": 31487804,
+    "positive_rate_pct": 11.5308
+  },
+  "candidate_strategy": "Strategy B (Rule A: country+prefix4+house UNION Rule B: country+exact_address)",
+  "validation": {
+    "split": "15% stratified holdout",
+    "pr_auc": 0.9982
+  },
+  "model_path": "C:\\NEW AMAZON\\Amazon-ML-Challenge-2026\\P2\\models\\lgbm_baseline_v1.txt",
+  "test_output_s2": "C:\\NEW AMAZON\\Amazon-ML-Challenge-2026\\P2\\data\\processed\\test_pair_predictions_s2.tsv",
+  "test_output_s3": "C:\\NEW AMAZON\\Amazon-ML-Challenge-2026\\P2\\data\\processed\\test_pair_predictions_s3.tsv"
+}

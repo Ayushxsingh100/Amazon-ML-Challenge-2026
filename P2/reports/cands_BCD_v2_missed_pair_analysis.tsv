@@ -1,0 +1,3 @@
+target	ground_truth_total	v2_captured	v2_missed	v2_recall	indic_non_ascii_name_count	both_missing_house_count	severe_name_variation_jw_under_60	moderate_name_variation_jw_60_to_85	high_name_similarity_differing_address_jw_over_85
+S2	3693619	2438575	1255044	0.660213	386517	67513	1255039	0	0
+S3	3944746	2584593	1360153	0.655199	306899	85364	1360142	0	0

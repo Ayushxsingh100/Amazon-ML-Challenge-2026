@@ -1,0 +1,7 @@
+dataset	input_path	output_path	rows	columns	id_preservation	empty_name_count	empty_address_count	empty_country_count	generator_code	status
+train_source1_normalized	data/train/train_source1.tsv	outputs/person1_step1/normalized/train_source1_normalized.tsv	2206821	4	100% (2206821 / 2206821)	0	0	0	notebooks/02_normalization.ipynb / outputs/person1_step1 pipeline	PASS
+train_source2_normalized	data/train/train_source2.tsv	outputs/person1_step1/normalized/train_source2_normalized.tsv	5034616	4	100% (5034616 / 5034616)	6	168967	0	notebooks/02_normalization.ipynb / outputs/person1_step1 pipeline	PASS
+train_source3_normalized	data/train/train_source3.tsv	outputs/person1_step1/normalized/train_source3_normalized.tsv	5285603	4	100% (5285603 / 5285603)	18	175916	0	notebooks/02_normalization.ipynb / outputs/person1_step1 pipeline	PASS
+test_source1_normalized	data/test/test_source1.tsv	outputs/person1_step1/normalized/test_source1_normalized.tsv	1732544	4	100% (1732544 / 1732544)	0	0	0	notebooks/02_normalization.ipynb / outputs/person1_step1 pipeline	PASS
+test_source2_normalized	data/test/test_source2.tsv	outputs/person1_step1/normalized/test_source2_normalized.tsv	4887273	4	100% (4887273 / 4887273)	49	129408	0	notebooks/02_normalization.ipynb / outputs/person1_step1 pipeline	PASS
+test_source3_normalized	data/test/test_source3.tsv	outputs/person1_step1/normalized/test_source3_normalized.tsv	5082316	4	100% (5082316 / 5082316)	61	136098	0	notebooks/02_normalization.ipynb / outputs/person1_step1 pipeline	PASS

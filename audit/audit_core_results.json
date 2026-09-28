@@ -1,0 +1,318 @@
+{
+  "raw_data_counts": {
+    "train_source1": {
+      "rows": 2206821,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "train_source2": {
+      "rows": 5034616,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "train_source3": {
+      "rows": 5285603,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "train_ground_truth": {
+      "rows": 2206821,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_ids"
+      ]
+    },
+    "test_source1": {
+      "rows": 1732544,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "test_source2": {
+      "rows": 4887273,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "test_source3": {
+      "rows": 5082316,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    }
+  },
+  "normalized_data_counts": {
+    "train_source1_normalized": {
+      "rows": 2206821,
+      "unique_ids": 2206821,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "train_source2_normalized": {
+      "rows": 5034616,
+      "unique_ids": 5034616,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "train_source3_normalized": {
+      "rows": 5285603,
+      "unique_ids": 5285603,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "test_source1_normalized": {
+      "rows": 1732544,
+      "unique_ids": 1732544,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "test_source2_normalized": {
+      "rows": 4887273,
+      "unique_ids": 4887273,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    },
+    "test_source3_normalized": {
+      "rows": 5082316,
+      "unique_ids": 5082316,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ]
+    }
+  },
+  "row_retention": {
+    "train_source1": {
+      "raw": 2206821,
+      "normalized": 2206821,
+      "rows_lost": 0
+    },
+    "train_source2": {
+      "raw": 5034616,
+      "normalized": 5034616,
+      "rows_lost": 0
+    },
+    "train_source3": {
+      "raw": 5285603,
+      "normalized": 5285603,
+      "rows_lost": 0
+    },
+    "test_source1": {
+      "raw": 1732544,
+      "normalized": 1732544,
+      "rows_lost": 0
+    },
+    "test_source2": {
+      "raw": 4887273,
+      "normalized": 4887273,
+      "rows_lost": 0
+    },
+    "test_source3": {
+      "raw": 5082316,
+      "normalized": 5082316,
+      "rows_lost": 0
+    }
+  },
+  "ground_truth": {
+    "raw_gt_rows": 2206821,
+    "raw_gt_unique_s1": 2206821,
+    "recon_gt_rows": 2206821,
+    "recon_gt_unique_s1": 2206821,
+    "sha_match": true,
+    "total_exploded_pairs": 7638365,
+    "s2_pairs": 3693619,
+    "s3_pairs": 3944746,
+    "other_pairs": 0,
+    "no_match_s1": 123247,
+    "dup_s1_in_gt": 0,
+    "s1_both_s2_s3": 1776047,
+    "s1_s2_only": 143029,
+    "s1_s3_only": 164498
+  },
+  "candidate_stats": {
+    "train_s2_v1": {
+      "rows": 24594064,
+      "unique_s1": 1859868,
+      "unique_target": 2798463,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "positives": 2214137,
+      "negatives": 22379927
+    },
+    "train_s3_v1": {
+      "rows": 29998661,
+      "unique_s1": 1881377,
+      "unique_target": 3016380,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "positives": 2346442,
+      "negatives": 27652219
+    },
+    "test_s2_p1": {
+      "rows": 26046195,
+      "unique_s1": 1331914,
+      "unique_target": 2298136,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ]
+    },
+    "test_s3_p1": {
+      "rows": 30777878,
+      "unique_s1": 1350577,
+      "unique_target": 2492891,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ]
+    },
+    "train_s2_v2": {
+      "rows": 30359040,
+      "unique_s1": 1929373,
+      "unique_target": 3045029,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "positives": 2438575,
+      "negatives": 27920465
+    },
+    "train_s3_v2": {
+      "rows": 36973484,
+      "unique_s1": 1944749,
+      "unique_target": 3277458,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id",
+        "label"
+      ],
+      "positives": 2584593,
+      "negatives": 34388891
+    },
+    "test_s2_v2": {
+      "rows": 34919169,
+      "unique_s1": 1526337,
+      "unique_target": 2712234,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ]
+    },
+    "test_s3_v2": {
+      "rows": 41714627,
+      "unique_s1": 1537152,
+      "unique_target": 2946450,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_id"
+      ]
+    }
+  },
+  "candidate_recall_v1": {
+    "S2": {
+      "gt_total": 3693619,
+      "captured": 2214137,
+      "missed": 1479482,
+      "recall": 0.599449,
+      "s1_with_gt": 1919076,
+      "s1_fully_covered": 892292,
+      "s1_partial": 475680,
+      "s1_zero_capture": 551104
+    },
+    "S3": {
+      "gt_total": 3944746,
+      "captured": 2346442,
+      "missed": 1598304,
+      "recall": 0.594827,
+      "s1_with_gt": 1940545,
+      "s1_fully_covered": 846169,
+      "s1_partial": 583513,
+      "s1_zero_capture": 510863
+    }
+  },
+  "candidate_recall_v2": {
+    "S2": {
+      "gt_total": 3693619,
+      "captured": 2438575,
+      "missed": 1255044,
+      "recall": 0.660213
+    },
+    "S3": {
+      "gt_total": 3944746,
+      "captured": 2584593,
+      "missed": 1360153,
+      "recall": 0.655199
+    }
+  },
+  "test_data_counts": {
+    "test_source1": {
+      "rows": 1732544,
+      "unique_ids": 1732544
+    },
+    "test_source2": {
+      "rows": 4887273,
+      "unique_ids": 4887273
+    },
+    "test_source3": {
+      "rows": 5082316,
+      "unique_ids": 5082316
+    }
+  },
+  "e02_metrics": {
+    "floor": 0.05584820880352326,
+    "baseline": 0.7694519450829973,
+    "oracle": 0.7845225911416449,
+    "model_gap": 0.0151,
+    "candidate_gap": 0.2155
+  }
+}
